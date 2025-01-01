@@ -270,7 +270,7 @@ button.white {
 
 /* hero */
 #hero {
-  background-image: url("/img/landing.jpg");
+  background-image: url("./img/landing.jpg");
   background-size: cover;
   background-position: top 70% right;
   width: 100%;
@@ -742,7 +742,7 @@ button.white {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  background-image: url("../img/banner/b2.jpg");
+  background-image: url("./img/banner/b2.jpg");
   width: 100%;
   height: 40vh;
   background-position: center;
@@ -815,10 +815,10 @@ button.white {
   padding: 30px;
 }
 #banner2 .banner-box:nth-child(1) {
-  background-image: url("../img/banner/b17.jpg");
+  background-image: url("./img/banner/b17.jpg");
 }
 #banner2 .banner-box:nth-child(2) {
-  background-image: url("../img/banner/b10.jpg");
+  background-image: url("./img/banner/b10.jpg");
 }
 #banner2 h4 {
   color: #fff;
@@ -886,13 +886,13 @@ button.white {
   margin-bottom: 20px;
 }
 #banner3 .banner-box:nth-child(1) {
-  background-image: url("../img/banner/b7.jpg");
+  background-image: url("./img/banner/b7.jpg");
 }
 #banner3 .banner-box:nth-child(2) {
-  background-image: url("../img/banner/b4.jpg");
+  background-image: url("./img/banner/b4.jpg");
 }
 #banner3 .banner-box:nth-child(3) {
-  background-image: url("../img/banner/b18.jpg");
+  background-image: url("./img/banner/b18.jpg");
 }
 #banner3 h2 {
   color: #fff;
@@ -912,7 +912,7 @@ button.white {
   justify-content: space-between;
   align-items: start;
   flex-wrap: wrap;
-  background-image: url("../img/banner/b14.png");
+  background-image: url("./img/banner/b14.png");
   background-repeat: no-repeat;
   background-position: 20% 30%;
   background-color: var(--first-color);
@@ -937,7 +937,7 @@ button.white {
   width: 40%;
 }
 #newsletter input {
-  height: 3.125rem;
+  height: 5.125rem;
   padding: 0 1.25em;
   font-size: 14px;
   width: 100%;
