@@ -284,7 +284,7 @@ button.white {
   color: var(--main-color);
 }
 #hero button {
-  background-image: url("../img/button.png");
+  background-image: url("./img/button.png");
   background-color: transparent;
   background-repeat: no-repeat;
   cursor: pointer;
