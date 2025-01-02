@@ -34,13 +34,9 @@ Images.forEach((img) => {
     let Img = document.createElement("img");
     Img.src = img.src;
     Img.alt = "";
-    Img.width = "100%";
+    Img.width = "90%";
     ImageBox.appendChild(Img);
     Box.appendChild(ImageBox);
-
-    let h4 = document.createElement("h4");
-    h4.textContent = "adidas";
-    ImageBox.appendChild(h4);
 
     let h2 = document.createElement("h2");
     h2.textContent = "Carton Astronaut T-Shirt";
