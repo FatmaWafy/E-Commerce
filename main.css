@@ -495,7 +495,7 @@ button.white {
   text-align: center;
 }
 #products .pro a:hover .cart {
-  transform: rotate(1turn);
+  transform: scale(1.1);
 }
 .overlay {
   position: fixed;
@@ -1141,3 +1141,4 @@ footer .copyright span {
   background-color: #888;
   opacity: 1;
 }
+
