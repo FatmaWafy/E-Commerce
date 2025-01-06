@@ -2,7 +2,7 @@ let userIcone = document.getElementById("userIcon");
 userIcone.addEventListener("click", () => {
     // Create overlay
     let overlay = document.createElement("div");
-    overlay.className = "login-overlay"; // Apply the class for styling the overlay
+    overlay.className = "login-overlay"; 
 
     // Create login card
     let loginCard = document.createElement("div");
@@ -54,7 +54,6 @@ userIcone.addEventListener("click", () => {
     document.body.appendChild(overlay);
     overlay.appendChild(loginCard);
 
-    // Add event listener to close the login card when the close button is clicked
     closeBtn.addEventListener("click", () => {
         document.body.removeChild(overlay);
     });
