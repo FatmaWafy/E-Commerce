@@ -11,11 +11,11 @@ userIcone.addEventListener("click", () => {
     // Add login form elements
     let formHtml = `
     <h2>Login</h2>
-    <form>
+    <form class="login-form">
         <div class="mb-3">
           <input
             type="email"
-            class="form-control"
+            class="form-control-lg w-100 h-50"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Email"
@@ -24,21 +24,21 @@ userIcone.addEventListener("click", () => {
         <div class="mb-3">
           <input
             type="password"
-            class="form-control my-2"
+            class="form-control-lg w-100 h-50 my-2"
             id="exampleInputPassword1"
             placeholder="Password"
           required/>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        <div class="mb-3 form-check-inline">
+          <div>
+            <input type="checkbox" class="form-check-input-lg" id="exampleCheck1" />
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div>
+          <a href="#" class="forgot-password">Forgot password?</a>
         </div>
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" class="btn-submit">Submit</button>
         <div class="link">
-          <p>
-            Don't have an account?
-            <a href="#">Register</a>
-          </p>
+          <p>Don't have an account? <a href="#">Register now</a></p>
         </div>
       </form>
   `;

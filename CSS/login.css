@@ -28,9 +28,21 @@
 
 
 }
-.btn {
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+}
+.btn-submit {
     background-color: #d5c5a7;
+    color: var(--first-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 8.2rem;
+    height: 5.5rem ;
+    border-radius: 10px;
     align-self: flex-end;
+
 }
 .close-btn{
     position: absolute;
@@ -49,4 +61,16 @@
   font-weight: bold;
   font-family: arial, Tahoma;
 
+}
+.form-check-label {
+  font-size: 1.25rem;
+}
+.form-check-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; 
+}
+.link p, .forgot-password{
+  font-size: 1.2rem; 
 }
