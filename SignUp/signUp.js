@@ -20,6 +20,7 @@ const messageElement = document.getElementById("message");
 // Password visibility toggle
 document.getElementById("togglePassword").addEventListener("click", function() {
   const passwordField = document.getElementById("password");
+  console.log("Password toggle clicked");
   if (passwordField.type === "password") {
     passwordField.type = "text";
   } else {
@@ -29,6 +30,7 @@ document.getElementById("togglePassword").addEventListener("click", function() {
 
 document.getElementById("togglecPassword").addEventListener("click", function() {
   const cpasswordField = document.getElementById("cpassword");
+  console.log("Password toggle clicked");
   if (cpasswordField.type === "password") {
     cpasswordField.type = "text";
   } else {
