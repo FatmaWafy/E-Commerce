@@ -1,29 +1,29 @@
 .login-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
 .login-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    width: 40rem;
-    height: 40rem;
-    background-color: #fff;
-    color:#000;
-    border-radius: 2em;
-    z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  width: 40rem;
+  height: 43rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 2em;
+  z-index: 1000;
 }
 .login-card h2 {
   font-size: 3.5rem;
@@ -31,25 +31,23 @@
 .login-form {
   display: flex;
   flex-direction: column;
-
 }
 .btn-submit {
-    background-color: #d5c5a7;
-    color: var(--first-color);
-    font-size: 1.2rem;
-    font-weight: 500;
-    width: 8.2rem;
-    height: 5.5rem ;
-    border-radius: 10px;
-    align-self: flex-end;
-    margin-bottom: 0.7em;
-
+  background-color: #d5c5a7;
+  color: var(--first-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+  width: 8.2rem;
+  height: 5.5rem;
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-bottom: 0.7em;
 }
-.close-btn{
-    position: absolute;
-    top: 27%;
-    right: 38.5%;
-    background-color: var(--second-color);
+.close-btn {
+  position: relative;
+  top: -100%;
+  right: -50%;
+  background-color: var(--second-color);
   color: var(--first-color);
   border: 1px solid transparent;
   border-radius: 50%;
@@ -61,7 +59,6 @@
   cursor: pointer;
   font-weight: bold;
   font-family: arial, Tahoma;
-
 }
 .form-check-label {
   font-size: 1.25rem;
@@ -70,8 +67,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
-.link p, .forgot-password{
-  font-size: 1.2rem; 
+.link p,
+.forgot-password {
+  font-size: 1.2rem;
+}
+#togglePassword {
+  background-color: transparent;
+  color: var(--first-color);
+  border-style: none;
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+.form-text {
+  display: block;  
+}
+
+.text-danger {
+  font-size: 1.3rem;
 }
