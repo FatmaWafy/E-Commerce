@@ -38,7 +38,10 @@ userIcone.addEventListener("click", () => {
         </div>
         <button type="submit" class="btn-submit">Submit</button>
         <div class="link">
-          <p>Don't have an account? <a href="#">Register now</a></p>
+          <p>
+            Don't have an account?
+          <a href="./SignUp/signUp.html">Sign In</a>
+          </p>
         </div>
       </form>
   `;
