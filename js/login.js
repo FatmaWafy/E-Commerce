@@ -40,7 +40,7 @@ userIcone.addEventListener("click", () => {
         <div class="link">
           <p>
             Don't have an account?
-          <a href="./SignUp/signUp.html">Sign In</a>
+          <a href="./SignUp/signUp.html">Sign Up</a>
           </p>
         </div>
       </form>
