@@ -108,11 +108,11 @@ userIcone.addEventListener("click", () => {
     let errors = []
     if (email === "") {
       errors.push("email is required");
-      errorMsg(emailField.parentElement, "incorrect");
+      errorMsg(emailField.parentElement, "email is required");
     }
     if (password === "") {
       errors.push("password is required");
-      errorMsg(passwordField.parentElement.parentElement, "incorrect");
+      errorMsg(passwordField.parentElement.parentElement, "email is required");
     }
     return errors;
   }
