@@ -112,7 +112,7 @@ userIcone.addEventListener("click", () => {
     }
     if (password === "") {
       errors.push("password is required");
-      errorMsg(passwordField.parentElement.parentElement, "email is required");
+      errorMsg(passwordField.parentElement.parentElement, "password is required");
     }
     return errors;
   }
