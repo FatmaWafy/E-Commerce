@@ -47,8 +47,8 @@
 }
 .close-btn{
     position: absolute;
-    top: 25%;
-    right: 38%;
+    top: 27%;
+    right: 38.5%;
     background-color: var(--second-color);
   color: var(--first-color);
   border: 1px solid transparent;
