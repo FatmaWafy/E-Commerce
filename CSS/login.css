@@ -42,10 +42,11 @@
   border-radius: 10px;
   align-self: flex-end;
   margin-bottom: 0.7em;
+  border-style:none ;
 }
 .close-btn {
   position: relative;
-  top: -100%;
+  top: -98%;
   right: -50%;
   background-color: var(--second-color);
   color: var(--first-color);
@@ -86,4 +87,7 @@
 
 .text-danger {
   font-size: 1.3rem;
+}
+#exampleInputEmail1, #exampleInputPassword1 {
+  border: 2px solid gray;
 }
