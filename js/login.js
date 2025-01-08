@@ -1,6 +1,6 @@
-let users =[];
+let users = [];
 let userIcone = document.getElementById("userIcon");
-userIcone.addEventListener("click", async() => {
+userIcone.addEventListener("click", async () => {
   users = await fetchUsersNData();
 
   // Create overlay
@@ -95,52 +95,53 @@ userIcone.addEventListener("click", async() => {
     });
   }
 
-//get users data:
-async function fetchUsersNData() {
-  try {
-    const res = await fetch("../data.json");
-    if (!res.ok) {
-      throw new Error(`Error ${res.status}, couldn't load data!`);
+  //get users data:
+  async function fetchUsersNData() {
+    try {
+      const res = await fetch("../data.json");
+      if (!res.ok) {
+        throw new Error(`Error ${res.status}, couldn't load data!`);
+      }
+      const users = await res.json();
+      return users;
+    } catch (error) {
+      console.error("Unable to fetch data:", error);
+      return [];
     }
-    const users = await res.json();
-    return users; 
-  } catch (error) {
-    console.error("Unable to fetch data:", error);
-    return []; 
   }
-}
   //Login Validations:
   const errorMsg = (parent, msg) => {
     if (parent.querySelector(".form-text")) {
       parent.querySelector(".form-text").remove();
     }
-      const errorElement = document.createElement("div");
-      errorElement.className = "form-text text-danger";
-      errorElement.textContent = msg;
-      parent.appendChild(errorElement);
-    
+    const errorElement = document.createElement("div");
+    errorElement.className = "form-text text-danger";
+    errorElement.textContent = msg;
+    parent.appendChild(errorElement);
   };
 
   function getLoginErrors(email, password) {
-    let errors = []
+    let errors = [];
     if (!email) {
       errors.push("email is required");
       errorMsg(emailField.parentElement, "email is required");
     }
     if (!password) {
       errors.push("password is required");
-      errorMsg(passwordField.parentElement.parentElement, "password is required");
+      errorMsg(
+        passwordField.parentElement.parentElement,
+        "password is required"
+      );
     }
     return errors;
   }
-  
-  function validateUserData(email,password)
-  {
-    console.log(users)
-    const user = users?.filter((user)=>{
+
+  function validateUserData(email, password) {
+    console.log(users);
+    const user = users?.filter((user) => {
       return user.Email == email && user.Password == password;
     });
-    console.log(user)
+    console.log(user);
     return user;
   }
 
@@ -149,36 +150,30 @@ async function fetchUsersNData() {
     console.log(users);
 
     e.preventDefault();
-    if (errors.length === 0)
-    {
+    if (errors.length === 0) {
       const emailVal = emailField.value.trim();
       const passwordVal = passwordField.value.trim();
       console.log(emailVal, passwordVal);
-      const validUser = validateUserData(emailVal,passwordVal);
-      if(validUser.length > 0)
-        console.log(`success ${isValid}`);
-        // logged in and redirect to home page
-      else
-        console.log(false);
-        //wrong email or password
-
+      const validUser = validateUserData(emailVal, passwordVal);
+      if (validUser.length > 0) console.log(`success ${isValid}`);
+      // logged in and redirect to home page
+      else console.log(false);
+      //wrong email or password
     }
-
   });
 
-//reset error msgs
-  emailField.addEventListener('input',()=>{
+  //reset error msgs
+  emailField.addEventListener("input", () => {
     if (emailField.parentElement.querySelector(".form-text")) {
       emailField.parentElement.querySelector(".form-text").remove();
     }
   });
 
-
-  passwordField.addEventListener('input',()=>{
+  passwordField.addEventListener("input", () => {
     if (passwordField.parentElement.parentElement.querySelector(".form-text")) {
-      passwordField.parentElement.parentElement.querySelector(".form-text").remove();
+      passwordField.parentElement.parentElement
+        .querySelector(".form-text")
+        .remove();
     }
   });
-
-
 });
