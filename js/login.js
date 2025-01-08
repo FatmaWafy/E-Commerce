@@ -135,4 +135,21 @@ userIcone.addEventListener("click", () => {
       passwordField.parentElement.parentElement.querySelector(".form-text").remove();
     }
   });
+
+  //get users data:
+function fetchUsersNData() {
+    fetch("../data.json")
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error
+                    (`error ${res.status}, couldn't load data!`);
+            }
+            return res.json();
+        })
+        .then((data) =>
+            console.log(data))
+        .catch((error) =>
+            console.error("Unable to fetch data:", error));
+}
+ const users = fetchUsersNData();
 });
