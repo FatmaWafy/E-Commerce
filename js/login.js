@@ -1,88 +1,44 @@
-let users = [];
-let userIcone = document.getElementById("userIcon");
-userIcone.addEventListener("click", async () => {
-  users = await fetchUsersNData();
+import renderLoginForm from './LoginForm.js';
 
-  // Create overlay
-  let overlay = document.createElement("div");
-  overlay.className = "login-overlay";
+document.getElementById("userIcon").addEventListener("click", async () => {
 
-  // Create login card
-  let loginCard = document.createElement("div");
-  loginCard.className = "login-card";
-
-  // Add login form elements
-  let formHtml = `
-    <h2>Login</h2>
-    <form class="login-form">
-        <div class="mb-3">
-          <input
-            type="email"
-            class="form-control-lg w-100 h-50"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Email"
-          />
-        </div>
-        <div>
-          <div class="d-flex">
-          <input
-            type="password"
-            class="form-control-lg w-100 h-50 my-2"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-          <button type="button" id="togglePassword">
-                              <i class="fa-solid fa-eye"></i></button>
-        </div>
-        </div>
-        <div class="mb-3 form-check-inline">
-          <div>
-            <input type="checkbox" class="form-check-input-lg" id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-          </div>
-          <a href="#" class="forgot-password">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn-submit">Submit</button>
-        <div class="link">
-          <p>
-            Don't have an account?
-          <a href="./SignUp/signUp.html">Sign Up</a>
-          </p>
-        </div>
-      </form>
-  `;
-  //forgot password form
-  let forgotPassFormHtml = `
-    <h2>Forgot Password</h2>
-    <form class="forgot-pass-form">
-        <div class="mb-3">
-          <input
-            type="email"
-            class="form-control-lg w-100 h-50"
-            id="resetEmail"
-            aria-describedby="emailHelp"
-            placeholder="Email"
-          />
-        <button type="submit" class="btn-reset">Reset Password</button>
-        <div class="link">
-          <p>Back to login? <a id="bTLogin" href="#">Log in</a>|<a href="./SignUp/signUp.html">Sign Up</a></p>
-        </div>
-      </form>
-  `;
-
-
-  loginCard.innerHTML = formHtml;
-
-  // Create and append a close button to the login card
-  let closeBtn = document.createElement("button");
-  closeBtn.className = "close-btn";
-  closeBtn.innerHTML = "X";
-  loginCard.appendChild(closeBtn);
+  // Create overlay and login card
+  const overlay = createOverlay();
+  const loginCard = createLoginCard();
+  const closeBtn = createCloseButton();
 
   document.body.appendChild(overlay);
   overlay.appendChild(loginCard);
 
+  // Render login form and attach listeners
+  renderLoginForm(loginCard, closeBtn);
+  
+  // Close overlay on button click or overlay click
+  attachOverlayListeners(overlay, closeBtn);
+});
+
+
+
+function createOverlay() {
+  const overlay = document.createElement("div");
+  overlay.className = "login-overlay";
+  return overlay;
+}
+
+function createLoginCard() {
+  const loginCard = document.createElement("div");
+  loginCard.className = "login-card";
+  return loginCard;
+}
+
+function createCloseButton() {
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "close-btn";
+  closeBtn.innerHTML = "X";
+  return closeBtn;
+}
+
+function attachOverlayListeners(overlay, closeBtn) {
   closeBtn.addEventListener("click", () => {
     document.body.removeChild(overlay);
   });
@@ -92,116 +48,5 @@ userIcone.addEventListener("click", async () => {
       document.body.removeChild(overlay);
     }
   });
+}
 
-  //form elements
-  const loginForm = document.querySelector(".login-form");
-  const togglePasswordButton = document.getElementById("togglePassword");
-  const passwordField = document.getElementById("exampleInputPassword1");
-  const emailField = document.getElementById("exampleInputEmail1");
-  const foegotPasswordLink = document.querySelector(".forgot-password");
-  const backToLogin = document.getElementById("bTLogin");
-  // Password visibility toggle
-  if (togglePasswordButton) {
-    togglePasswordButton.addEventListener("click", function () {
-      console.log("Password toggle clicked");
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        togglePasswordButton.innerHTML =
-          '<i class="fa-solid fa-eye-slash"></i>';
-      } else {
-        passwordField.type = "password";
-        togglePasswordButton.innerHTML = '<i class="fa-solid fa-eye"></i>';
-      }
-    });
-  }
-
-  //get users data:
-  async function fetchUsersNData() {
-    try {
-      const res = await fetch("../data.json");
-      if (!res.ok) {
-        throw new Error(`Error ${res.status}, couldn't load data!`);
-      }
-      const users = await res.json();
-      return users;
-    } catch (error) {
-      console.error("Unable to fetch data:", error);
-      return [];
-    }
-  }
-  //Login Validations:
-  const errorMsg = (parent, msg) => {
-    if (parent.querySelector(".form-text")) {
-      parent.querySelector(".form-text").remove();
-    }
-    const errorElement = document.createElement("div");
-    errorElement.className = "form-text text-danger";
-    errorElement.textContent = msg;
-    parent.appendChild(errorElement);
-  };
-
-  function getLoginErrors(email, password) {
-    let errors = [];
-    if (!email) {
-      errors.push("email is required");
-      errorMsg(emailField.parentElement, "email is required");
-    }
-    if (!password) {
-      errors.push("password is required");
-      errorMsg(
-        passwordField.parentElement.parentElement,
-        "password is required"
-      );
-    }
-    return errors;
-  }
-
-  function validateUserData(email, password) {
-    console.log(users);
-    const user = users?.filter((user) => {
-      return user.Email == email && user.Password == password;
-    });
-    console.log(user);
-    return user;
-  }
-
-  loginForm.addEventListener("submit", (e) => {
-    let errors = getLoginErrors(emailField.value, passwordField.value);
-    console.log(users);
-
-    e.preventDefault();
-    if (errors.length === 0) {
-      const emailVal = emailField.value.trim();
-      const passwordVal = passwordField.value.trim();
-      console.log(emailVal, passwordVal);
-      const validUser = validateUserData(emailVal, passwordVal);
-      if (validUser.length > 0) console.log(`success ${isValid}`);
-      // logged in and redirect to home page
-      else console.log(false);
-      //wrong email or password
-    }
-  });
-
-  //reset error msgs
-  emailField.addEventListener("input", () => {
-    if (emailField.parentElement.querySelector(".form-text")) {
-      emailField.parentElement.querySelector(".form-text").remove();
-    }
-  });
-
-  passwordField.addEventListener("input", () => {
-    if (passwordField.parentElement.parentElement.querySelector(".form-text")) {
-      passwordField.parentElement.parentElement
-        .querySelector(".form-text")
-        .remove();
-    }
-  });
-
-//forgot password
-foegotPasswordLink.addEventListener('click',()=>{
-  loginCard.style.display = "none"
-
-});
-
-
-});

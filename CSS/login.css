@@ -16,10 +16,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-top: 1.7rem;
-  padding-bottom: 1.7rem;
+  padding-top: 2rem;
   width: 40rem;
-  height: 43rem;
+  height: 38rem;
   background-color: #fff;
   color: #000;
   border-radius: 2em;
@@ -32,7 +31,7 @@
   display: flex;
   flex-direction: column;
 }
-.btn-submit {
+.btn-reset, .btn-submit {
   background-color: #d5c5a7;
   color: var(--first-color);
   font-size: 1.2rem;
@@ -45,9 +44,7 @@
   border-style:none ;
 }
 .close-btn {
-  position: relative;
-  top: -98%;
-  right: -50%;
+  position: absolute;
   background-color: var(--second-color);
   color: var(--first-color);
   border: 1px solid transparent;
@@ -74,7 +71,7 @@
 .forgot-password {
   font-size: 1.2rem;
 }
-#togglePassword {
+#togglePasswordl {
   background-color: transparent;
   color: var(--first-color);
   border-style: none;
@@ -88,6 +85,24 @@
 .text-danger {
   font-size: 1.3rem;
 }
-#exampleInputEmail1, #exampleInputPassword1 {
+#exampleInputEmail1, #exampleInputPassword1,#resetEmail {
   border: 2px solid gray;
+  width: 100%;
+}
+
+.btn-reset{
+  width: auto;
+  padding: 0 1.5rem;
+  margin: auto 0;
+  align-self: flex-end;
+}
+form {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.forgot-password{
+  justify-content: space-around;
 }
