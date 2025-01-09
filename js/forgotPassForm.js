@@ -62,14 +62,12 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
       const emailVal = emailField.value.trim();
       console.log(emailVal);
       const validUser = validateUserData(emailVal, null, users, "forgot");
-      if (validUser) {
+      if (validUser.length>0) {
         console.log(validUser[0].Email);
-        window.open(`mailto:${validUser[0].Email}?subject=Shista Reset Password &body=We heard that you lost your Shista password. Sorry about that! But don’t worry! You can use the following link to reset your password:
-            https://fatmawafy.github.io/E-Commerce/HTML/reset%20password.html
-`);
+        window.location.href =`mailto:${validUser[0].Email}?subject=Shista Reset Password &body=We heard that you lost your Shista password. 
+        Sorry about that! But don’t worry! You can use the following link to reset your password: https://fatmawafy.github.io/E-Commerce/HTML/reset%20password.html`;
       }
-      // send email
-      else console.log(false);
+      else errorMsg(emailField.parentElement,"No user found with that email.");
       //wrong email
     }
   });
