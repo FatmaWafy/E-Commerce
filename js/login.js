@@ -1,5 +1,4 @@
 import renderLoginForm from './LoginForm.js';
-
 document.getElementById("userIcon").addEventListener("click", async () => {
 
   // Create overlay and login card

@@ -8,7 +8,7 @@ export default async function renderForgotPasswordForm(loginCard, closeBtn) {
   const users = await fetchUsersNData();
   const forgotPassFormHtml = `
       <h2 class="fh">Forgot Password</h2>
-      <form class="forgot-pass-form d-flex flex-column">
+      <form class="forgot-pass-form login-form d-flex flex-column">
           <div>
 
               <div class="mb-3">

@@ -3,7 +3,7 @@ export default async function renderLoginForm(loginCard, closeBtn) {
   const users = await fetchUsersNData();
   const formHtml = `
       <h2>Login</h2>
-      <form class="login-form">
+      <form class="login-form d-flex flex-column justify-content-evenly h-80 w-70">
           <div class="mb-3">
             <input
               type="email"

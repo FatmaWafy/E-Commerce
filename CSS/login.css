@@ -27,10 +27,6 @@
 .login-card h2 {
   font-size: 3.5rem;
 }
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
 .btn-reset, .btn-submit {
   background-color: #d5c5a7;
   color: var(--first-color);
@@ -96,7 +92,7 @@
   margin: auto 0;
   align-self: flex-end;
 }
-form {
+.login-form {
   width: 80%;
   height: 70%;
   display: flex;
