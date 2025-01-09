@@ -52,6 +52,25 @@ userIcone.addEventListener("click", async () => {
         </div>
       </form>
   `;
+  //forgot password form
+  let forgotPassFormHtml = `
+    <h2>Forgot Password</h2>
+    <form class="forgot-pass-form">
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control-lg w-100 h-50"
+            id="resetEmail"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+          />
+        <button type="submit" class="btn-reset">Reset Password</button>
+        <div class="link">
+          <p>Back to login? <a id="bTLogin" href="#">Log in</a>|<a href="./SignUp/signUp.html">Sign Up</a></p>
+        </div>
+      </form>
+  `;
+
 
   loginCard.innerHTML = formHtml;
 
@@ -79,7 +98,8 @@ userIcone.addEventListener("click", async () => {
   const togglePasswordButton = document.getElementById("togglePassword");
   const passwordField = document.getElementById("exampleInputPassword1");
   const emailField = document.getElementById("exampleInputEmail1");
-
+  const foegotPasswordLink = document.querySelector(".forgot-password");
+  const backToLogin = document.getElementById("bTLogin");
   // Password visibility toggle
   if (togglePasswordButton) {
     togglePasswordButton.addEventListener("click", function () {
@@ -176,4 +196,12 @@ userIcone.addEventListener("click", async () => {
         .remove();
     }
   });
+
+//forgot password
+foegotPasswordLink.addEventListener('click',()=>{
+  loginCard.style.display = "none"
+
+});
+
+
 });
