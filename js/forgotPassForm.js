@@ -65,6 +65,7 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
       if (validUser) {
         console.log(validUser[0].Email);
         window.open(`mailto:${validUser[0].Email}?subject=Shista Reset Password &body=We heard that you lost your Shista password. Sorry about that! But don’t worry! You can use the following link to reset your password:
+            https://fatmawafy.github.io/E-Commerce/HTML/reset%20password.html
 `);
       }
       // send email
