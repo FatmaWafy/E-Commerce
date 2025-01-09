@@ -343,14 +343,25 @@ function updateCartUI() {
     subtotalPrice  += item.price * item.quantity;
   });
 
-  subtotal.textContent = subtotalPrice.toFixed(2);
-
-  const shippingCost = 80;
+  const shippingCost = cart.length > 0 ? 80 : 0;
   const totalPrice = subtotalPrice + shippingCost;
+  
+  subtotal.textContent = subtotalPrice.toFixed(2);
 
   subTotal.textContent = `$${subtotalPrice.toFixed(2)}`;
   shopping.textContent = `$${shippingCost}`;
   total.textContent = `$${totalPrice.toFixed(2)}`;
+
+  const checkoutData = cart.map(item => ({
+    name: item.name,
+    size: item.size,
+    quantity: item.quantity,
+    price: item.price,
+  }));
+  const summary = document.getElementById("summary-list");
+  summary.innerHTML =checkoutData.map((item )=> `
+      <li style="margin-bottom: 10px;">${item.name} (${item.size}): ${item.quantity} x $${item.price.toFixed(2)}</li>`
+).join("");
 }
 
 document.addEventListener("DOMContentLoaded", updateCartUI);
@@ -420,30 +431,15 @@ document.querySelector(".checkout-button").addEventListener("click", () => {
     return;
   }
 
-  const checkoutData = cart.map(item => ({
-    name: item.name,
-    size: item.size,
-    quantity: item.quantity,
-    price: item.price,
-  }));
-  const subtotal = checkoutData.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const shippingCost = 80;
+  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const shippingCost = 80; 
   const total = subtotal + shippingCost;
 
-  const checkoutSummary = document.getElementById("checkout-summary");
-  checkoutSummary.innerHTML = `
-  <h3>Your Order Summary</h3>
-  <ul style="list-style-type: none; padding: 0;">
-    ${checkoutData.map(item => `
-      <li style="margin-bottom: 10px;">${item.name} (${item.size}): ${item.quantity} x $${item.price.toFixed(2)}</li>
-    `).join('')}
-  </ul>
- <h5>Subtotal: $${subtotal.toFixed(2)}</h5>
-  <h5>Shipping Cost: $${shippingCost.toFixed(2)}</h5>
-  <h4> Total: $${total.toFixed(2)}</h4>
 
-`;
-
+  const summary = document.getElementById("checkout-total");
+  summary.innerHTML = `
+    <li style="margin-bottom: 10px; font-weight: bold;">Total: $${total.toFixed(2)}</li>
+  `;
 
   const overlay = document.getElementById("checkout-overlay");
   overlay.style.display = "flex";
@@ -454,21 +450,26 @@ document.getElementById("close-overlay").addEventListener("click", () => {
   overlay.style.display = "none";
 });
 
+
 document.getElementById("payment-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const phoneNumber = document.getElementById("phone-number").value;
+  const address = document.getElementById("address").value;
   const cardNumber = document.getElementById("card-number").value;
   const expiryDate = document.getElementById("expiry-date").value;
 
-  if (!cardNumber || !expiryDate ) {
+  if (!phoneNumber || !address ||!cardNumber || !expiryDate) {
     alert("Please fill in all payment fields.");
     return;
   }
 
   const paymentData = {
+    phoneNumber,
+    address,
     cardNumber,
     expiryDate,
-    cartData: cart
+    cartData: cart,
   };
 
   console.log("Processing payment with data:", paymentData);
@@ -477,7 +478,7 @@ document.getElementById("payment-form").addEventListener("submit", (e) => {
   saveCart();
   updateCartUI();
 
-  alert("Payment successfull");
+  alert("Payment successful!");
   const overlay = document.getElementById("checkout-overlay");
   overlay.style.display = "none";
 });

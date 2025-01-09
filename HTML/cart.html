@@ -91,6 +91,9 @@
     </section>
 
     <section id="cart-total">
+        <h2>Your Order Summary</h2>
+        <ul id="summary-list"></ul>
+        <hr/>
       <h2>Total Cart</h2>
       <div class="total-item">
         <h4>Subtotal :</h4>
@@ -113,10 +116,28 @@
       <div id="checkout-overlay" class="overlay">
         <div class="overlay-content">
           <h2>Checkout</h2>
-          <div id="checkout-summary"></div>
+          <h4><span id="checkout-total"></span></h4>
 
           <!-- Payment Form -->
           <form id="payment-form">
+            <div>
+              <label for="phone-number">Phone Number:</label>
+              <input
+                type="text"
+                id="phone-number"
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
+            <div>
+              <label for="address">Address:</label>
+              <input
+                type="text"
+                id="address"
+                placeholder="Enter your address"
+                required
+              />
+            </div>
             <div>
               <label for="card-number">Card Number:</label>
               <input

@@ -115,6 +115,14 @@
   text-transform: uppercase;
 }
 
+#cart-total ul {
+  list-style-type: none; 
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
 .total-item {
   display: flex;
   justify-content: space-between;
@@ -187,20 +195,20 @@ hr {
   max-width: 90%;
 }
 
-#checkout-summary {
-  margin-bottom: 20px;
-}
-
-#checkout-summary p {
-  font-size: 14px;
-  margin: 5px 0;
+.overlay-content h2{
+ margin: 0%;
+ text-align: center;
+ font-size: 20px;
 }
 
 #payment-form {
   display: flex;
   flex-direction: column;
 }
-
+#payment-form label {
+  font-size: 12px;
+  font-weight: bold;
+}
 #payment-form input {
   margin-bottom: 10px;
   padding: 10px;
