@@ -81,7 +81,7 @@ Images.forEach((img) => {
     let input = document.createElement("input");
     input.type = "number";
     input.value = "1";
-    input.min = "1"; 
+    input.min = "1";
     DetailsBox.appendChild(input);
 
     //Add Add to Cart button
@@ -89,9 +89,7 @@ Images.forEach((img) => {
     button.className = "normal";
     button.textContent = "Add To Cart";
 
-
     DetailsBox.appendChild(button);
-
 
     button.addEventListener("click", () => {
       const quantity = parseInt(input.value, 10);
@@ -116,7 +114,9 @@ Images.forEach((img) => {
       addToCart(baseProduct);
       saveCart();
 
-      alert(`${baseProduct.quantity} x ${baseProduct.name} (${baseProduct.size}) added to cart!`);
+      alert(
+        `${baseProduct.quantity} x ${baseProduct.name} (${baseProduct.size}) added to cart!`
+      );
     });
 
     // create CloseBtn
@@ -243,27 +243,28 @@ let cart = [];
 
 function updateCartUI() {
   const cartList = document.getElementById("cart-list");
+  const subtotal = document.getElementById("subtotal");
+  const subTotal = document.getElementById("sub-total");
+  const shopping = document.getElementById("shopping");
   const total = document.getElementById("total");
-
+  
   if (!cartList || !total) return;
 
   cartList.innerHTML = "";
-  let totalPrice = 0;
+  let subtotalPrice = 0;
 
   cart.forEach((item, index) => {
-    const li = document.createElement("li");
+    const row = document.createElement("tr");
 
-    const nameSpan = document.createElement("span");
-    nameSpan.className = "product-name";
-    nameSpan.textContent = item.name;
-
-    const sizeContainer = document.createElement("div");
-    sizeContainer.className = "product-size-container";
-
+    const nameCell = document.createElement("td");
+    nameCell.className = "product-name";
+    nameCell.textContent = item.name;
+    
+    const sizeCell = document.createElement("td");
     const sizeSelect = document.createElement("select");
     const sizes = ["Small", "Medium", "Large", "Xl", "XXl"];
-    
-    sizes.forEach(size => {
+
+    sizes.forEach((size) => {
       const option = document.createElement("option");
       option.textContent = size;
       option.value = size;
@@ -279,12 +280,13 @@ function updateCartUI() {
       updateCartUI();
     });
 
-    sizeContainer.appendChild(sizeSelect);
+    sizeCell.appendChild(sizeSelect);
 
-    const priceSpan = document.createElement("span");
-    priceSpan.className = "product-price";
-    priceSpan.textContent = `$${item.price}`;
+    const priceCell = document.createElement("td");
+    priceCell.className = "product-price";
+    priceCell.textContent = `$${item.price}`;
 
+    const quantityCell = document.createElement("td");
     const quantityContainer = document.createElement("div");
     quantityContainer.className = "quantity-container";
 
@@ -315,7 +317,9 @@ function updateCartUI() {
     quantityContainer.appendChild(minusButton);
     quantityContainer.appendChild(quantitySpan);
     quantityContainer.appendChild(plusButton);
+    quantityCell.appendChild(quantityContainer);
 
+    const deleteCell = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-button";
 
@@ -327,24 +331,45 @@ function updateCartUI() {
       updateCartUI();
       saveCart();
     });
+    deleteCell.appendChild(deleteButton);
 
-    li.appendChild(nameSpan);
-    li.appendChild(sizeContainer);  
-    li.appendChild(priceSpan);
-    li.appendChild(quantityContainer);
-    li.appendChild(deleteButton);
+    row.appendChild(nameCell);
+    row.appendChild(sizeCell);
+    row.appendChild(priceCell);
+    row.appendChild(quantityCell);
+    row.appendChild(deleteCell);
 
-    cartList.appendChild(li);
-    totalPrice += item.price * item.quantity;
+    cartList.appendChild(row);
+    subtotalPrice  += item.price * item.quantity;
   });
 
-  total.textContent = totalPrice.toFixed(2);
+  const shippingCost = cart.length > 0 ? 80 : 0;
+  const totalPrice = subtotalPrice + shippingCost;
+  
+  subtotal.textContent = subtotalPrice.toFixed(2);
+
+  subTotal.textContent = `$${subtotalPrice.toFixed(2)}`;
+  shopping.textContent = `$${shippingCost}`;
+  total.textContent = `$${totalPrice.toFixed(2)}`;
+
+  const checkoutData = cart.map(item => ({
+    name: item.name,
+    size: item.size,
+    quantity: item.quantity,
+    price: item.price,
+  }));
+  const summary = document.getElementById("summary-list");
+  summary.innerHTML =checkoutData.map((item )=> `
+      <li style="margin-bottom: 10px;">${item.name} (${item.size}): ${item.quantity} x $${item.price.toFixed(2)}</li>`
+).join("");
 }
 
 document.addEventListener("DOMContentLoaded", updateCartUI);
 
 function addToCart(product) {
-  const existingProduct = cart.find((item) => item.id === product.id && item.size === product.size);
+  const existingProduct = cart.find(
+    (item) => item.id === product.id && item.size === product.size
+  );
 
   if (existingProduct) {
     existingProduct.quantity += product.quantity;
@@ -364,21 +389,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let sizeSelect = productDiv.querySelector("select");
 
-      
       if (!sizeSelect) {
         sizeSelect = document.createElement("select");
         const sizes = ["Small", "Medium", "Large", "Xl", "XXl"];
 
-        
-        sizes.forEach(size => {
+        sizes.forEach((size) => {
           const option = document.createElement("option");
           option.textContent = size;
           option.value = size;
           sizeSelect.appendChild(option);
         });
-
-      
-      
       }
 
       const selectedSize = sizeSelect.value;
@@ -393,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
         name: productDiv.querySelector("h5").textContent,
         price: parseFloat(productDiv.dataset.price),
         quantity: 1,
-        size: selectedSize, 
+        size: selectedSize,
       };
 
       addToCart(product);
@@ -403,6 +423,64 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   loadCart();
+});
+
+document.querySelector(".checkout-button").addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Your cart is empty! Please add items to the cart before checkout.");
+    return;
+  }
+
+  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const shippingCost = 80; 
+  const total = subtotal + shippingCost;
+
+
+  const summary = document.getElementById("checkout-total");
+  summary.innerHTML = `
+    <li style="margin-bottom: 10px; font-weight: bold;">Total: $${total.toFixed(2)}</li>
+  `;
+
+  const overlay = document.getElementById("checkout-overlay");
+  overlay.style.display = "flex";
+});
+
+document.getElementById("close-overlay").addEventListener("click", () => {
+  const overlay = document.getElementById("checkout-overlay");
+  overlay.style.display = "none";
+});
+
+
+document.getElementById("payment-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const phoneNumber = document.getElementById("phone-number").value;
+  const address = document.getElementById("address").value;
+  const cardNumber = document.getElementById("card-number").value;
+  const expiryDate = document.getElementById("expiry-date").value;
+
+  if (!phoneNumber || !address ||!cardNumber || !expiryDate) {
+    alert("Please fill in all payment fields.");
+    return;
+  }
+
+  const paymentData = {
+    phoneNumber,
+    address,
+    cardNumber,
+    expiryDate,
+    cartData: cart,
+  };
+
+  console.log("Processing payment with data:", paymentData);
+
+  cart = [];
+  saveCart();
+  updateCartUI();
+
+  alert("Payment successful!");
+  const overlay = document.getElementById("checkout-overlay");
+  overlay.style.display = "none";
 });
 
 
@@ -417,3 +495,7 @@ function loadCart() {
     updateCartUI();
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+})
