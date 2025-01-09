@@ -96,17 +96,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #e3e6f3;
+  background-color: #41141b;
   border: 1px solid #bdbbbb;
   border-radius: 10px;
   padding: 30px;
 }
 #form form span {
   margin-bottom: 10px;
+  color: #e1c693;
 }
 #form form h2 {
   margin-bottom: 30px;
   font-size: 35px;
+  color: white;
 }
 #form form input,
 #form form textarea {
@@ -118,7 +120,7 @@
   border-radius: 10px;
 }
 #form form button {
-  background-color: #088178;
+  background-color: #e1c693;
   color: white;
 }
 #form .people div {
