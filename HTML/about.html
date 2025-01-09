@@ -14,6 +14,9 @@
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
     <link rel="icon" type="image/x-icon" href="../img/cart.png" />
+    <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/login.css" />
+    <link rel="stylesheet" href="../CSS/about.css" />
     <link rel="stylesheet" href="../main.css" />
     <link rel="stylesheet" href="../CSS/about.css" />
   </head>
@@ -43,6 +46,9 @@
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a href="#" id="userIcon"><i class="fa-solid fa-user"></i></a>
+            </li>
             <li id="lg-bag">
               <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
             </li>
@@ -69,6 +75,60 @@
         </div>
       </div>
     </header>
+    <!-- ################## Start About ################# -->
+    <section class="about-section-container my-5">
+      <div class="container-fluid h-50 my-5 py-5 d-flex flex-column align-items-center">
+        <h1 class="heading mb-5 text-center">About Us</h1>
+        <div class="row justify-content-around align-items-center mx-5 px-5 my-5">
+          <div class="col-md-6 my-3 text-center main-img">
+            <img src="../img/about/a6.jpg" class="h-75 w-75"/>
+          </div>
+          <div class="col my-3">
+            <h2 class="mb-5 heading">Who We Are?</h2>
+            <p>
+              We have over 3500+ unbaisd reviews and our customers trust our
+              products.
+            </p>
+            <p class="about-description">
+              <i class="fas fa-check-square"></i> We always delivery on time.
+            </p>
+            <p class="about-description">
+              <i class="fas fa-check-square"></i> We give you guides to protect
+              and care for your product.
+            </p>
+            <p class="about-description">
+              <i class="fas fa-check-square"></i> 100% money back Guaranted.
+            </p>
+          </div>
+        </div>
+        <h2 class="heading my-5 text-center">What we offer:</h2>
+        <div class="row justify-content-center align-items-center mt-5 w-100">
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f1.png" />
+            <h6>Free Shipping</h6>
+          </div>
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f2.png" />
+            <h6>Online Orders</h6>
+          </div>
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f3.png" />
+            <h6>Save Money</h6>
+          </div>
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f4.png" />
+            <h6>Promotion</h6>
+          </div>
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f5.png" />
+            <h6>Happy Sell</h6>
+          </div>
+          <div class="my-3 text-center offer-box">
+            <img src="../img/about/f6.png" />
+            <h6>24/7 Support</h6>
+          </div>
+      </div>
+    </section>
 
     <section id="info">
       <div class="container">
@@ -205,5 +265,6 @@
       </div>
     </footer>
     <script src="../master.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </body>
 </html>

@@ -58,7 +58,7 @@ p {
 button.normal {
   font-size: 14px;
   font-weight: 600;
-  padding: 15px 30px;
+  padding: 10px 30px;
   color: #000;
   background-color: #fff;
   border-radius: 10px;
@@ -145,7 +145,7 @@ button.white {
   font-size: 20px;
   cursor: pointer;
   width: 50px;
-  height: 35px;
+  height: 41.5px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: var(--transition);
@@ -436,7 +436,7 @@ button.white {
   text-align: center;
 }
 #products .pro a:hover .cart {
-  transform: rotate(1turn);
+  transform: scale(1.1);
 }
 .overlay {
   position: fixed;
@@ -1082,3 +1082,4 @@ footer .copyright span {
   background-color: #888;
   opacity: 1;
 }
+
