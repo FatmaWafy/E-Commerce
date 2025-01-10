@@ -1,22 +1,32 @@
-import renderLoginForm from './LoginForm.js';
+import renderLoginForm from "./LoginForm.js";
 document.getElementById("userIcon").addEventListener("click", async () => {
+  if (!isLoggedin) {
+    // Create overlay and login card
+    const overlay = createOverlay();
+    const loginCard = createLoginCard();
+    const closeBtn = createCloseButton();
 
-  // Create overlay and login card
-  const overlay = createOverlay();
-  const loginCard = createLoginCard();
-  const closeBtn = createCloseButton();
+    document.body.appendChild(overlay);
+    overlay.appendChild(loginCard);
 
-  document.body.appendChild(overlay);
-  overlay.appendChild(loginCard);
+    // Render login form and attach listeners
+    renderLoginForm(loginCard, closeBtn);
 
-  // Render login form and attach listeners
-  renderLoginForm(loginCard, closeBtn);
-  
-  // Close overlay on button click or overlay click
-  attachOverlayListeners(overlay, closeBtn);
+    // Close overlay on button click or overlay click
+    attachOverlayListeners(overlay, closeBtn);
+  }else{
+    
+  }
 });
 
-
+function isLoggedin() {
+  if (!localStorage.getItem("loggedin")) {
+    localStorage.setItem("loggedin", "true");
+    return false;
+  }
+  if (localStorage.getItem("loggedin") === "true") return true;
+  else return false;
+}
 
 function createOverlay() {
   const overlay = document.createElement("div");
@@ -48,4 +58,3 @@ function attachOverlayListeners(overlay, closeBtn) {
     }
   });
 }
-

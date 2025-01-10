@@ -98,10 +98,20 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
       const passwordVal = passwordField.value.trim();
       console.log(emailVal, passwordVal);
       const validUser = validateUserData(emailVal, passwordVal, users, "login");
-      if (validUser.length > 0) console.log(`success ${validUser}`);
-      // logged in and redirect to home page
-      else console.log(false);
-      //wrong email or password
+      if (validUser.length > 0)
+      {
+        localStorage.setItem("email",validUser[0].Email);
+        localStorage.setItem("password",validUser[0].Password);
+      }
+      else 
+      {
+        //wrong email or password
+        //errorDiv = document.createElement(div);
+        errorP = document.createElement(p);
+        errorP.innerText= "Wrong email or password";
+        errorP.className = "form-text text-danger";
+        loginForm.appendChild(errorP);
+      }
     }
   });
 }
