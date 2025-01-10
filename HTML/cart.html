@@ -16,7 +16,7 @@
     <link rel="icon" type="image/x-icon" href="../img/cart.png" />
     <link rel="stylesheet" href="../main.css" />
     <link rel="stylesheet" href="../CSS/cart.css" />
-    <link rel="stylesheet" href="../CSS/login.css"/>
+    <link rel="stylesheet" href="../CSS/login.css" />
   </head>
 
   <body>
@@ -28,12 +28,12 @@
 
         <form>
           <input
-            class="form-control search-input"
+            class="form-control search-input search-input-cart"
             type="search"
             placeholder="Search for products"
             aria-label="Search"
           />
-          <button class="btn search-icon" type="submit">
+          <button class="search-icon" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
@@ -50,9 +50,14 @@
                 ><i class="fa-solid fa-cart-shopping"></i
               ></a>
             </li>
-            <li><a href="#" id="userIcon"><i class="fa-solid fa-user"></i></a></li>
-            <li id="lg-bag"><a href="cart.html" class="active"><i class="fa-solid fa-cart-shopping"></i></a></li>
-
+            <li>
+              <a href="#" id="userIcon"><i class="fa-solid fa-user"></i></a>
+            </li>
+            <li id="lg-bag">
+              <a href="cart.html" class="active"
+                ><i class="fa-solid fa-cart-shopping"></i
+              ></a>
+            </li>
           </ul>
         </nav>
 
@@ -95,9 +100,9 @@
     </section>
 
     <section id="cart-total">
-        <h2>Your Order Summary</h2>
-        <ul id="summary-list"></ul>
-        <hr/>
+      <h2>Your Order Summary</h2>
+      <ul id="summary-list"></ul>
+      <hr />
       <h2>Total Cart</h2>
       <div class="total-item">
         <h4>Subtotal :</h4>
@@ -223,7 +228,7 @@
         <div class="col install">
           <h4>Install App</h4>
           <p>From App Store Or Google play</p>
-          <div class="row">
+          <div class="footer-row">
             <img loading="lazy" src="../img/pay/app.jpg" alt="" />
             <img loading="lazy" src="../img/pay/play.jpg" alt="" />
           </div>

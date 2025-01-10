@@ -145,7 +145,7 @@ button.white {
   font-size: 20px;
   cursor: pointer;
   width: 50px;
-  height: 41.5px;
+  height: 41.3px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: var(--transition);
@@ -917,7 +917,7 @@ button.white {
   }
   #newsletter input {
     font-size: 10px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     height: 2.5rem;
   }
   button.normal {
@@ -977,7 +977,11 @@ footer .follow i {
   font-size: 18px;
   padding-right: 4px;
 }
-footer .install .row img {
+.footer-row {
+  display: flex;
+  gap: 5px;
+}
+footer .install .footer-row img {
   border: 1px solid #777;
   border-radius: 10px;
 }
@@ -1082,4 +1086,3 @@ footer .copyright span {
   background-color: #888;
   opacity: 1;
 }
-
