@@ -118,11 +118,11 @@ body {
 }
 
 .password-container button:hover {
-  background-color: #875858; /* Slightly darker shade for hover effect */
+  background-color: #875858; 
 }
 
 .password-container button i {
-  font-size: 1.2rem; /* Adjust icon size */
+  font-size: 1.2rem;
 }
 
   
@@ -153,80 +153,63 @@ body {
 }
 
 .errors {
-    color: rgb(205, 15, 30);
-    /* font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif"; */
-    font-size: 14px;
-    font-style: oblique;
-    text-align: left;
+  color: rgb(205, 15, 30);
+  font-size: 14px;
+  font-style: oblique;
+  text-align: left;
 }
 
 .indicator {
-    border-radius: 6px;
-    padding: 4px;
-    background-color: #453FCF;
-    height: 10px;
-    margin: 10px 0;
-    align-items: center;
-    justify-content: space-between;
-    display: none;
+  display: none;
+  background-color: #ddd;
+  padding: 3px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 .indicator span {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background: lightgrey;
-    border-radius: 5px;
+  height: 100%;
+  width: 33%;
+  background-color: lightgrey;
+  border-radius: 5px;
 }
 
-.indicator span:nth-child(2) {
-    margin: 0 3px;
+.indicator span.active {
+  background-color: transparent;
 }
 
-.indicator span.active:before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
+.indicator span.weak {
+  background-color: red;
 }
 
-.indicator span.weak:before {
-    background-color: #ff4757;
+.indicator span.medium {
+  background-color: orange;
 }
 
-.indicator span.medium:before {
-    background-color: orange;
-}
-
-.indicator span.strong:before {
-    background-color: #23ad5c;
+.indicator span.strong {
+  background-color: green;
 }
 
 .strength {
-    border-radius: 6px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    background-color: #453FCF;
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    display: none;
+  display: none;
+  padding: 4px;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
 }
 
 .strength.weak {
-    color: #ff4757;
+  color: red;
 }
 
 .strength.medium {
-    color: orange;
+  color: orange;
 }
 
 .strength.strong {
-    color: #23ad5c;
+  color: green;
 }
+
 
 .footer {
     font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';

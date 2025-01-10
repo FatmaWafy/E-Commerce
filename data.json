@@ -26,5 +26,21 @@
     "Email": "omar.youssef@example.com",
     "Phone": "5558883333",
     "Password": "Omar2024!"
+  },
+  {
+    "firstName": "salma",
+    "lastName": "saad",
+    "phone": "011",
+    "address": "alshrouk",
+    "email": "salma@gmail.com",
+    "password": "Salma@1234"
+  },
+  {
+    "firstName": "salma",
+    "lastName": "saad",
+    "phone": "011",
+    "address": "alshrouk",
+    "email": "salma.saad.2026@gmail.com",
+    "password": "Salma@1234"
   }
 ]
