@@ -35,7 +35,7 @@ export default async function renderLoginForm(loginCard, closeBtn) {
         <div class="link">
             <p>
               Don't have an account?
-            <a href="./SignUp/signUp.html">Sign Up</a>
+            <a href="../SignUp/signUp.html">Sign Up</a>
             </p>
           </div>
     `;
