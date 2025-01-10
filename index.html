@@ -45,13 +45,16 @@
             <li><a href="./HTML/about.html">About</a></li>
             <li><a href="./HTML/contact.html">Contact</a></li>
             <li>
-              <a href="#" id="userIcon"><i class="fa-solid fa-user"></i></a>
-            </li>
-            <li>
               <a href="./HTML/cart.html"
                 ><i class="fa-solid fa-cart-shopping"></i
               ></a>
             </li>
+              <li>
+                <a href="#" id="userIcon">
+                  <i class="fa-solid fa-user"></i>
+                  <span id="userName">Guest</span>
+                </a>
+              </li>
           </ul>
         </nav>
 
@@ -472,5 +475,13 @@
     </footer>
     <script src="master.js"></script>
     <script type="module" src="js/login.js"></script>
+    <script>
+      window.onload = function() {
+        const userName = localStorage.getItem('username');
+        if (userName) {
+          document.getElementById('userName').textContent = userName;
+        }
+      };
+    </script>
   </body>
 </html>
