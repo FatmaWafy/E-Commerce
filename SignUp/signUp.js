@@ -97,7 +97,7 @@ registerForm.addEventListener("submit", (event) => {
     PassError.textContent = "Password is required!";
     isValid = false;
     } else {
-        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordRegex.test(Pass.value.trim())) {
             PassError.textContent = "Password must be at least 8 characters, include one uppercase letter, one number, and one special character!";
             isValid = false;
