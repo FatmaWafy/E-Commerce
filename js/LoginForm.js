@@ -25,10 +25,6 @@ export default async function renderLoginForm(loginCard, closeBtn) {
           </div>
           </div>
           <div class="mb-3 form-check-inline">
-            <div>
-              <input type="checkbox" class="form-check-input-lg" id="exampleCheck1" />
-              <label class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
             <a href="#" class="forgot-password">Forgot password?</a>
           </div>
           <div class="d-flex justify-content-between w-100">
