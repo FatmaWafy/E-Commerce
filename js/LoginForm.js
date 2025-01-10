@@ -77,8 +77,9 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
   emailField.addEventListener("input", () => {
     if (emailField.parentElement.querySelector(".form-text")) {
       emailField.parentElement.querySelector(".form-text").remove();
-      errorP.innerText="";
     }
+    errorP.innerText="";
+
   });
 
   passwordField.addEventListener("input", () => {
@@ -86,9 +87,10 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
       passwordField.parentElement.parentElement
         .querySelector(".form-text")
         .remove();
-        errorP.innerText="";
 
     }
+    errorP.innerText="";
+
   });
 
 
