@@ -1,7 +1,26 @@
 import renderLoginForm from "./LoginForm.js";
-document.getElementById("userIcon").addEventListener("click", async () => {
-  if (!isLoggedin) {
+const userIcon = document.getElementById("userIcon");
+const userName = document.getElementById("userName");
+const logoutLi = document.createElement("li");
+
+window.addEventListener("load",()=>{
+  if (isLoggedin())
+  {
+    userName.innerText =localStorage.getItem("name");
+    const logoutA = document.createElement("a");
+    logoutA.setAttribute("id","logout")
+    logoutA.innerHTML = `<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`
+    logoutLi.appendChild(logoutA);
+    logoutLi.style.cursor="pointer"
+    userIcon.parentElement.parentElement.appendChild(logoutLi);
+ 
+
+  }
+});
+userIcon.addEventListener("click", function (){
+  if (!isLoggedin()) {
     // Create overlay and login card
+    console.log(this)
     const overlay = createOverlay();
     const loginCard = createLoginCard();
     const closeBtn = createCloseButton();
@@ -14,14 +33,24 @@ document.getElementById("userIcon").addEventListener("click", async () => {
 
     // Close overlay on button click or overlay click
     attachOverlayListeners(overlay, closeBtn);
-  }else{
-    
   }
+});
+
+logoutLi.addEventListener("click",()=>{
+  if(confirm("Are you sure to log out?"))
+  {
+    localStorage.setItem("loggedin", "false");
+    localStorage.setItem("name", "");
+    userName.innerText ="Guest";
+
+    logoutLi.remove();
+  }
+
 });
 
 function isLoggedin() {
   if (!localStorage.getItem("loggedin")) {
-    localStorage.setItem("loggedin", "true");
+    localStorage.setItem("loggedin", "false");
     return false;
   }
   if (localStorage.getItem("loggedin") === "true") return true;

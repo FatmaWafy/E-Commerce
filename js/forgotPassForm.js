@@ -30,7 +30,6 @@ export default async function renderForgotPasswordForm(loginCard, closeBtn) {
     `;
 
   loginCard.style.height = "30rem";
-  closeBtn.style.top = "32%";
   loginCard.innerHTML = forgotPassFormHtml;
   loginCard.appendChild(closeBtn);
   document.querySelector(".fh").style.font = "550 2.7rem inheret";
