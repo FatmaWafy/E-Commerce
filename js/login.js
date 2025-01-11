@@ -15,7 +15,10 @@ window.addEventListener("load",()=>{
     userIcon.parentElement.parentElement.appendChild(logoutLi);
  
 
+  }else{
+    userName.innerText="Login"
   }
+
 });
 userIcon.addEventListener("click", function (){
   if (!isLoggedin()) {
@@ -41,8 +44,7 @@ logoutLi.addEventListener("click",()=>{
   {
     localStorage.setItem("loggedin", "false");
     localStorage.setItem("name", "");
-    userName.innerText ="Guest";
-
+    userName.innerText ="Login";
     logoutLi.remove();
   }
 

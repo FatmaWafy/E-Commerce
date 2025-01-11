@@ -141,8 +141,10 @@ fetch("http://localhost:3000/addUser", {
       // Success: user added
       messageElement.textContent = data.message;
       messageElement.style.color = "green"; 
-      localStorage.setItem('username', newUser.firstName); 
       window.location.href = "/index.html"; 
+      localStorage.setItem("name",newUser.firstName);
+      localStorage.setItem("loggedin", "true");
+      location.reload();
     } else {
       // Failure: email already exists
       messageElement.textContent = data.message;
