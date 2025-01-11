@@ -13,6 +13,17 @@
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "toPhIjgK08z4j3BAl",
+        });
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="./img/cart.png" />
     <link href="./Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="CSS/login.css" />
@@ -49,12 +60,12 @@
                 ><i class="fa-solid fa-cart-shopping"></i
               ></a>
             </li>
-              <li>
-                <a href="#" id="userIcon">
-                  <i class="fa-solid fa-user"></i>
-                  <span id="userName">Guest</span>
-                </a>
-              </li>
+            <li>
+              <a href="#" id="userIcon">
+                <i class="fa-solid fa-user"></i>
+                <span id="userName">Guest</span>
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -476,10 +487,10 @@
     <script src="master.js"></script>
     <script type="module" src="js/login.js"></script>
     <script>
-      window.onload = function() {
-        const userName = localStorage.getItem('username');
+      window.onload = function () {
+        const userName = localStorage.getItem("username");
         if (userName) {
-          document.getElementById('userName').textContent = userName;
+          document.getElementById("userName").textContent = userName;
         }
       };
     </script>
