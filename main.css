@@ -356,16 +356,17 @@ button.white {
   cursor: pointer;
   font-weight: 700;
   font-size: 15px;
-  color: var(--main-color);
+
   border: 0;
   padding: 14px 80px 14px 65px;
 }
-
-@media (max-width: 767px) {
+#hero button a {
+  color: var(--main-color);
+}
+@media (max-width: 576px) {
   #hero {
     background-position: 70%;
-    padding: 180px 20px;
-    justify-content: start;
+    padding: 15px 20px;
   }
   #hero h4 {
     padding-bottom: 15px;
@@ -383,7 +384,12 @@ button.white {
   #hero p {
     margin: 0 0 20px 0;
   }
+  #hero button {
+    position: absolute;
+    right: -10px;
+  }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
   #hero {
     background-position: 50%;
@@ -418,7 +424,7 @@ button.white {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
   transition: 0.6s ease;
   position: relative;
-  height: 450px;
+  height: 480px;
 }
 #products .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.09);
@@ -450,14 +456,15 @@ button.white {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.05);
   transition: 0.6s ease;
   position: relative;
-  height: 340px;
+  height: 550px;
 }
+
 #newProducts .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.09);
 }
 #newProducts .pro img {
   width: 100%;
-  height: 100%;
+  height: 80%;
   border-radius: 10px;
 }
 
@@ -634,6 +641,11 @@ button.white {
   #products .pro .des h5 {
     font-size: 13px;
   }
+  #products h2 {
+    font-size: 35px;
+  }
+}
+@media (max-width: 576px) and (max-width: 767px) {
 }
 @media (max-width: 767px) {
   .Box {
@@ -1154,4 +1166,28 @@ footer .copyright span {
 }
 #newsletter button {
   border-radius: 10px;
+}
+@media (max-width: 576px) {
+  .slider {
+    height: 500px;
+  }
+  .slider__btn {
+    height: 40px;
+    width: 40px;
+    line-height: 1.5;
+  }
+
+  .slider__btn--left {
+    left: 10%;
+  }
+
+  .slider__btn--right {
+    right: 10%;
+  }
+
+  .dots__dot {
+    height: 0.95rem;
+    width: 0.95rem;
+    margin-right: 1.5rem;
+  }
 }
