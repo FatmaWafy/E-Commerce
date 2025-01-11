@@ -168,7 +168,6 @@ button.white {
   justify-content: center;
   text-align: end;
 }
-
 .logo {
   max-width: 150px;
 }
@@ -263,8 +262,75 @@ button.white {
   #navbar {
     display: flex;
   }
+  #navbar li {
+    padding: 0 6px;
+  }
+  #navbar li a {
+    font-size: 14px;
+  }
+  .search-input {
+    width: 300px;
+    font-size: 12px;
+  }
+  .search-icon {
+    width: 40px;
+    height: 35px;
+  }
+  #navbar {
+    margin-bottom: 0;
+  }
+  .logo {
+    max-width: 130px;
+  }
   #header form {
     display: flex;
+  }
+}
+@media (min-width: 1199px) {
+  #navbar li a {
+    font-size: 16px;
+  }
+  #navbar li {
+    padding: 0 10px;
+  }
+  .search-input {
+    border: 2px solid #41141b;
+    border-radius: 10px;
+    padding: 8px 50px 9px 20px;
+    width: 350px;
+    font-size: 16px;
+  }
+  .search-input {
+    border: 2px solid #41141b;
+    border-radius: 10px;
+    padding: 8px 50px 9px 20px;
+    width: 350px;
+    font-size: 16px;
+  }
+  .search-input:focus {
+    outline: none;
+  }
+  .search-icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--second-color);
+    border: none;
+    color: var(--first-color);
+    font-size: 20px;
+    cursor: pointer;
+    width: 50px;
+    height: 41.3px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: var(--transition);
+  }
+  .search-icon:hover {
+    background-color: #b39c73;
+  }
+  .logo {
+    max-width: 150px;
   }
 }
 
@@ -1086,6 +1152,6 @@ footer .copyright span {
   background-color: #888;
   opacity: 1;
 }
-#newsletter button{
+#newsletter button {
   border-radius: 10px;
 }
