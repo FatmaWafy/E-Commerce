@@ -27,7 +27,8 @@
 .login-card h2 {
   font-size: 3.5rem;
 }
-.btn-reset, .btn-submit {
+.btn-reset,
+.btn-submit {
   background-color: #d5c5a7;
   color: var(--first-color);
   font-size: 1.2rem;
@@ -37,7 +38,7 @@
   border-radius: 10px;
   align-self: flex-end;
   margin-bottom: 0.7em;
-  border-style:none ;
+  border-style: none;
 }
 .close-btn {
   position: relative;
@@ -76,18 +77,20 @@
   margin: 0 1rem;
 }
 .form-text {
-  display: block;  
+  display: block;
 }
 
 .text-danger {
   font-size: 1.3rem;
 }
-#exampleInputEmail1, #exampleInputPassword1,#resetEmail {
+#exampleInputEmail1,
+#exampleInputPassword1,
+#resetEmail {
   border: 2px solid gray;
   width: 100%;
 }
 
-.btn-reset{
+.btn-reset {
   width: auto;
   padding: 0 1.5rem;
   margin: auto 0;
@@ -100,6 +103,17 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-.forgot-password{
+.forgot-password {
   justify-content: space-around;
+}
+
+@media (max-width: 576px) {
+  .login-card {
+    width: 30rem;
+    height: 35rem;
+  }
+  .login-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
 }
