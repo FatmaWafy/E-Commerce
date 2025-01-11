@@ -25,6 +25,134 @@ body {
     padding: 13px 13px 13px 30px;
 }
 
+#header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: var(--first-color);
+}
+
+#header form {
+  display: none;
+  position: relative;
+  text-align: center;
+}
+#header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+#header .container:first-of-type(a) {
+  height: 100%;
+}
+#navbar {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: end;
+}
+
+.logo {
+  max-width: 150px;
+}
+#navbar li {
+  padding: 0 10px;
+  position: relative;
+}
+#navbar li a {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--second-color);
+  transition: var(--transition);
+}
+#navbar li a::after {
+  position: absolute;
+  content: "";
+  bottom: -4px;
+  left: 20px;
+  height: 2px;
+  width: 0%;
+  background-color: var(--second-color);
+  transition: var(--transition);
+}
+#navbar li a.active,
+#navbar li a:hover {
+  color: var(--second-color);
+}
+#navbar li a.active::after,
+#navbar li a:hover::after {
+  width: 30%;
+}
+#mobile {
+  display: block;
+}
+#mobile nav {
+  position: fixed;
+  right: -200px;
+  top: 50px;
+  width: 0px;
+  z-index: 1000;
+  height: 100%;
+  background-color: var(--second-color);
+  transition: var(--transition);
+}
+#mobile nav.open {
+  right: 0;
+  width: 100%;
+}
+#mobile nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 80px;
+}
+#mobile nav ul li {
+  margin: 15px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px dotted var(--fifth-color);
+  width: 100%;
+  text-align: center;
+}
+#mobile nav ul li a {
+  color: var(--main-color);
+}
+#mobile nav ul li a.active,
+#mobile nav ul li a:hover {
+  color: var(--first-color);
+}
+.mobile-only {
+  font-size: 25px;
+  color: var(--second-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.stop-scrolling {
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+  .logo {
+    max-width: 100px;
+  }
+  .mobile-only {
+    font-size: 18px;
+  }
+}
+@media (min-width: 992px) {
+  #mobile {
+    display: none;
+  }
+  #navbar {
+    display: flex;
+  }
+  #header form {
+    display: flex;
+  }
+}
+
 .header-text {
     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
     font-size: 200%;
