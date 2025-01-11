@@ -9,6 +9,17 @@
       crossorigin="anonymous"
     ></script>
     <title>Shista</title>
+    <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+  ></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "toPhIjgK08z4j3BAl",
+      });
+    })();
+  </script>
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -73,11 +84,9 @@
                   ><i class="fa-solid fa-cart-shopping"></i
                 ></a>
               </li>
-              <li>
-                <a href="#" id="userIcon">
-                  <i class="fa-solid fa-user"></i>
-                  <span id="userName">Login</span>
-                </a>
+              <li id="mobileLoginBtn">
+                <i class="fa-solid fa-user"></i>
+                <span id="userNameMob">Login</span>
               </li>
             </ul>
           </nav>

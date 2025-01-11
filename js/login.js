@@ -2,19 +2,34 @@ import renderLoginForm from "./LoginForm.js";
 const userIcon = document.getElementById("userIcon");
 const mobileLoginBtn = document.getElementById("mobileLoginBtn");
 const userName = document.getElementById("userName");
+const userNameMob = document.getElementById("userNameMob");
+
 const logoutLi = document.createElement("li");
 
 window.addEventListener("load", () => {
   if (isLoggedin()) {
-    userName.innerText = localStorage.getItem("name");
-    const logoutA = document.createElement("a");
-    logoutA.setAttribute("id", "logout");
-    logoutA.innerHTML = `<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`;
-    logoutLi.appendChild(logoutA);
-    logoutLi.style.cursor = "pointer";
-    userIcon.parentElement.parentElement.appendChild(logoutLi);
+    if(screen.width>=992)
+    {
+      userName.innerText = localStorage.getItem("name");
+      const logoutA = document.createElement("a");
+      logoutA.setAttribute("id", "logout");
+      logoutA.innerHTML = `<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`;
+      logoutLi.appendChild(logoutA);
+      logoutLi.style.cursor = "pointer";
+      userIcon.parentElement.parentElement.appendChild(logoutLi);
+    }else{
+      //mobile fiendly
+      userNameMob.innerText = localStorage.getItem("name");
+      logoutLi.innerHTML=`<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`;
+      logoutLi.setAttribute("id", "logout");
+      logoutLi.style.cursor = "pointer";
+      mobileLoginBtn.parentElement.appendChild(logoutLi);
+    }
+   
   } else {
     userName.innerText = "Login";
+    userNameMob.innerText = "Login";
+
   }
 });
 
@@ -44,6 +59,7 @@ logoutLi.addEventListener("click", () => {
     localStorage.setItem("loggedin", "false");
     localStorage.setItem("name", "");
     userName.innerText = "Login";
+    userNameMob.innerText = "Login";
     logoutLi.remove();
   }
 });

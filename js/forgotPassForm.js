@@ -96,7 +96,7 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
       } else {
         errorMsg(emailField.parentElement, "Invalid verification code.");
       }
-    } else {
+    } else if (forgotHeader.innerText === "Reset Password") {
       const passwordRegex =
         /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]{8,}$/;
       if (!passwordRegex.test(inputVal))
@@ -127,7 +127,7 @@ function sendEmail(email, code, emailField) {
     v_code: code,
   };
   emailjs
-    .send("service_wffg278", "template_1z5x8zs", params)
+    .send("service_3mcj8mp", "template_1z5x8zs", params)
     .then(alert("A verification email has been sent!"))
     .then(errorMsg(emailField.parentElement, "please check your email."))
     .catch((error) => console.error("Error sending email:", error));

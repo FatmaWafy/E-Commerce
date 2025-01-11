@@ -14,7 +14,7 @@ h2 {
   color: #41141b;
   font-weight: 700;
   margin-bottom: 25px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 #cart-items table {
