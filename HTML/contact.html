@@ -125,13 +125,12 @@
 
     <section id="form">
       <div class="container">
-        <form action="">
+        <form id="contactForm">
           <span>LEAVE A MESSAGE</span>
           <h2>We love to hear from you</h2>
-          <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="Your E-Mail" />
-          <input type="text" placeholder="Subject" />
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <input type="text" id="name" placeholder="Your Name" />
+          <input type="email" id="email" placeholder="Your E-Mail" />
+          <textarea name="" id="message" cols="30" rows="10"></textarea>
           <button type="submit" class="normal">Submit</button>
         </form>
 
@@ -234,6 +233,8 @@
       </div>
     </footer>
     <script src="../master.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="../js/contact.js"></script>
     <script type="module" src="../js/login.js"></script>
   </body>
 </html>
