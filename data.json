@@ -66,5 +66,13 @@
     "address": "Giza",
     "email": "menna.reda.ext@swift-act.com",
     "password": "123456Aa@"
+  },
+  {
+    "firstName": "Menna",
+    "lastName": "Mohamed",
+    "phone": "01142522864",
+    "address": "Giza",
+    "email": "mr8900533@gmail.com",
+    "password": "123456Aa@"
   }
 ]
