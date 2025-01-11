@@ -1,27 +1,27 @@
 const fs = require("fs");
 const express = require("express");
-const cors = require("cors");  
+const cors = require("cors");
 const app = express();
 const PORT = 3000;
+const filePath = "./data.json";
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
 app.post("/addUser", (req, res) => {
-    console.log("Request received:", req.body);  // Log the incoming request
-    const newUser = req.body;
-    const filePath = "./data.json";
-  
-    fs.readFile(filePath, "utf8", (err, data) => {
-      let users = [];
-      if (!err) {
-        try {
-          users = JSON.parse(data);
-        } catch {
-          users = [];
-        }
+  console.log("Request received:", req.body); // Log the incoming request
+  const newUser = req.body;
+
+  fs.readFile(filePath, "utf8", (err, data) => {
+    let users = [];
+    if (!err) {
+      try {
+        users = JSON.parse(data);
+      } catch {
+        users = [];
       }
+    }
 
       console.log("Server Response:", data);
       const existingUser = users.find(user => user.email === newUser.email);
@@ -46,8 +46,6 @@ app.post("/addUser", (req, res) => {
       }
     });
   });
+  
 
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

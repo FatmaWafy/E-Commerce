@@ -97,7 +97,7 @@ registerForm.addEventListener("submit", (event) => {
     PassError.textContent = "Password is required!";
     isValid = false;
     } else {
-        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordRegex.test(Pass.value.trim())) {
             PassError.textContent = "Password must be at least 8 characters, include one uppercase letter, one number, and one special character!";
             isValid = false;
@@ -141,8 +141,9 @@ fetch("http://localhost:3000/addUser", {
       // Success: user added
       messageElement.textContent = data.message;
       messageElement.style.color = "green"; 
-      localStorage.setItem('username', newUser.firstName); 
-      window.location.href = "/index.html"; 
+      window.location.href = "../index.html"; 
+      localStorage.setItem("name",newUser.firstName);
+      localStorage.setItem("loggedin", "true");
     } else {
       // Failure: email already exists
       messageElement.textContent = data.message;

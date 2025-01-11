@@ -3,7 +3,7 @@ export default async function renderLoginForm(loginCard, closeBtn) {
   const users = await fetchUsersNData();
   const formHtml = `
       <h2>Login</h2>
-      <form class="login-form d-flex flex-column justify-content-evenly h-80 w-70">
+      <form class="login-form d-flex flex-column justify-content-evenly h-80 w-70" >
           <div class="mb-3">
             <input
               type="email"
@@ -25,25 +25,24 @@ export default async function renderLoginForm(loginCard, closeBtn) {
           </div>
           </div>
           <div class="mb-3 form-check-inline">
-            <div>
-              <input type="checkbox" class="form-check-input-lg" id="exampleCheck1" />
-              <label class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
             <a href="#" class="forgot-password">Forgot password?</a>
           </div>
-          <button type="submit" class="btn-submit">Submit</button>
+          <div class="d-flex justify-content-between w-100">
+              <p class="errorLogin"></p>
+              <button type="submit" class="btn-submit align-self-end">Submit</button>
+          </div>
         </form>
         <div class="link">
             <p>
               Don't have an account?
-            <a href="./SignUp/signUp.html">Sign Up</a>
+            <a href="../SignUp/signUp.html">Sign Up</a>
             </p>
           </div>
     `;
   loginCard.style.height = "38rem";
   loginCard.innerHTML = formHtml;
-  closeBtn.style.top = "29.5%";
-  closeBtn.style.right = "38.5%";
+  closeBtn.style.top = "-100%";
+  closeBtn.style.right = "-48%";
 
   loginCard.appendChild(closeBtn);
 
@@ -56,6 +55,7 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
   const passwordField = document.getElementById("exampleInputPassword1");
   const emailField = document.getElementById("exampleInputEmail1");
   const forgotPasswordLink = document.querySelector(".forgot-password");
+  const errorP=document.querySelector(".errorLogin");
 
   // Password toggle
   if (togglePasswordButton) {
@@ -78,6 +78,8 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
     if (emailField.parentElement.querySelector(".form-text")) {
       emailField.parentElement.querySelector(".form-text").remove();
     }
+    errorP.innerText="";
+
   });
 
   passwordField.addEventListener("input", () => {
@@ -85,23 +87,36 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
       passwordField.parentElement.parentElement
         .querySelector(".form-text")
         .remove();
+
     }
+    errorP.innerText="";
+
   });
+
 
   loginForm.addEventListener("submit", (e) => {
     let errors = getLoginErrors(emailField, passwordField);
     console.log(users);
 
-    e.preventDefault();
     if (errors.length === 0) {
       const emailVal = emailField.value.trim();
       const passwordVal = passwordField.value.trim();
       console.log(emailVal, passwordVal);
       const validUser = validateUserData(emailVal, passwordVal, users, "login");
-      if (validUser.length > 0) console.log(`success ${validUser}`);
-      // logged in and redirect to home page
-      else console.log(false);
-      //wrong email or password
+
+      if (validUser.length > 0)
+      {
+        localStorage.setItem("name",validUser[0].FirstName);
+        localStorage.setItem("loggedin","true");
+        closeBtn.click();
+        location.reload();
+      }
+      else 
+      {
+        e.preventDefault();
+        errorP.innerText= "Wrong email or password";
+        errorP.classList.add("form-text", "text-danger");
+      }
     }
   });
 }
