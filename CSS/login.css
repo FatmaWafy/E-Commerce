@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1500;
 }
 
 .login-card {
@@ -22,7 +22,7 @@
   background-color: #fff;
   color: #000;
   border-radius: 2em;
-  z-index: 1000;
+  z-index: 1500;
 }
 .login-card h2 {
   font-size: 3.5rem;
