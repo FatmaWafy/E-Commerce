@@ -6,6 +6,8 @@ const PORT = 3000;
 
 app.use(express.json()); 
 app.use(cors());
+app.use(express.static("public"));
+
 app.post("/addUser", (req, res) => {
     console.log("Request received:", req.body);  // Log the incoming request
     const newUser = req.body;
@@ -44,6 +46,8 @@ app.post("/addUser", (req, res) => {
       }
     });
   });
-  
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
