@@ -1,29 +1,27 @@
 import renderLoginForm from "./LoginForm.js";
 const userIcon = document.getElementById("userIcon");
+const mobileLoginBtn = document.getElementById("mobileLoginBtn");
 const userName = document.getElementById("userName");
 const logoutLi = document.createElement("li");
 
-window.addEventListener("load",()=>{
-  if (isLoggedin())
-  {
-    userName.innerText =localStorage.getItem("name");
+window.addEventListener("load", () => {
+  if (isLoggedin()) {
+    userName.innerText = localStorage.getItem("name");
     const logoutA = document.createElement("a");
-    logoutA.setAttribute("id","logout")
-    logoutA.innerHTML = `<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`
+    logoutA.setAttribute("id", "logout");
+    logoutA.innerHTML = `<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout`;
     logoutLi.appendChild(logoutA);
-    logoutLi.style.cursor="pointer"
+    logoutLi.style.cursor = "pointer";
     userIcon.parentElement.parentElement.appendChild(logoutLi);
- 
-
-  }else{
-    userName.innerText="Login"
+  } else {
+    userName.innerText = "Login";
   }
-
 });
-userIcon.addEventListener("click", function (){
+
+const addForm = function () {
   if (!isLoggedin()) {
     // Create overlay and login card
-    console.log(this)
+    console.log(this);
     const overlay = createOverlay();
     const loginCard = createLoginCard();
     const closeBtn = createCloseButton();
@@ -37,17 +35,17 @@ userIcon.addEventListener("click", function (){
     // Close overlay on button click or overlay click
     attachOverlayListeners(overlay, closeBtn);
   }
-});
+};
+userIcon.addEventListener("click", addForm);
+mobileLoginBtn.addEventListener("click", addForm);
 
-logoutLi.addEventListener("click",()=>{
-  if(confirm("Are you sure to log out?"))
-  {
+logoutLi.addEventListener("click", () => {
+  if (confirm("Are you sure to log out?")) {
     localStorage.setItem("loggedin", "false");
     localStorage.setItem("name", "");
-    userName.innerText ="Login";
+    userName.innerText = "Login";
     logoutLi.remove();
   }
-
 });
 
 function isLoggedin() {
