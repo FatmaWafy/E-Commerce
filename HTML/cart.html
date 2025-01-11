@@ -14,9 +14,11 @@
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
     <link rel="icon" type="image/x-icon" href="../img/cart.png" />
-    <link rel="stylesheet" href="../main.css" />
+    <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/cart.css" />
     <link rel="stylesheet" href="../CSS/login.css" />
+    <link rel="stylesheet" href="../main.css" />
+
   </head>
 
   <body>
@@ -73,6 +75,12 @@
                 <a href="cart.html" class="active"
                   ><i class="fa-solid fa-cart-shopping"></i
                 ></a>
+              </li>
+              <li>
+                <a href="#" id="userIcon">
+                  <i class="fa-solid fa-user"></i>
+                  <span id="userName">Login</span>
+                </a>
               </li>
             </ul>
           </nav>
@@ -169,7 +177,7 @@
       </div>
     </section>
 
-    <section id="newsletter">
+    <section id="newsletter" class="d-flex justify-content-around align-items-center">
       <div class="newstext">
         <h4>Sign Up For Newsletter</h4>
         <p>
@@ -177,10 +185,7 @@
           <span>special offers</span>
         </p>
       </div>
-      <div class="form">
-        <input type="text" placeholder="Your email address" />
-        <button class="normal">Sign Up</button>
-      </div>
+        <button class="normal w-25 h-25" onclick="location.href='SignUp/signUp.html';">Sign Up</button>
     </section>
 
     <footer>

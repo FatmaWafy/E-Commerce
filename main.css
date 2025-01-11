@@ -1086,3 +1086,6 @@ footer .copyright span {
   background-color: #888;
   opacity: 1;
 }
+#newsletter button{
+  border-radius: 10px;
+}
