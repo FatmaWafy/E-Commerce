@@ -131,13 +131,12 @@
 
     <section id="form">
       <div class="container">
-        <form action="">
+        <form id="contactForm">
           <span>LEAVE A MESSAGE</span>
           <h2>We love to hear from you</h2>
-          <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="Your E-Mail" />
-          <input type="text" placeholder="Subject" />
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <input type="text" id="name" placeholder="Your Name" />
+          <input type="email" id="email" placeholder="Your E-Mail" />
+          <textarea name="" id="message" cols="30" rows="10"></textarea>
           <button type="submit" class="normal">Submit</button>
         </form>
 
@@ -204,29 +203,20 @@
 
         <div class="col">
           <h4>About</h4>
-          <a href="#">About Us</a>
-          <a href="#">Delibery Information</a>
+          <a href="../HTML/about.html">About Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms & Condetions</a>
-          <a href="#">Contact Us</a>
+          <a href="../HTML/contact.html">Contact Us</a>
         </div>
 
         <div class="col">
           <h4>My Account</h4>
-          <a href="#">Sign In</a>
-          <a href="#">View Carts</a>
-          <a href="#">My Wishlist</a>
-          <a href="#">Track My Order</a>
+          <a href="../../SignUp/signUp.html">Sign In</a>
+          <a href="../HTML/cart.html">View Carts</a>
           <a href="#">Help</a>
         </div>
 
         <div class="col install">
-          <h4>Install App</h4>
-          <p>From App Store Or Google play</p>
-          <div class="footer-row">
-            <img loading="lazy" src="../img/pay/app.jpg" alt="" />
-            <img loading="lazy" src="../img/pay/play.jpg" alt="" />
-          </div>
           <p>Secured Payment Gateways</p>
           <img loading="lazy" src="../img/pay/pay.png" alt="" />
         </div>
@@ -237,6 +227,8 @@
       </div>
     </footer>
     <script src="../master.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="../js/contact.js"></script>
     <script type="module" src="../js/login.js"></script>
   </body>
 </html>

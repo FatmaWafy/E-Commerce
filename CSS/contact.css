@@ -118,6 +118,8 @@
   margin-bottom: 20px;
   border: 1px solid #bdbaba;
   border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
 }
 #form form button {
   background-color: #e1c693;
