@@ -42,45 +42,5 @@
     "address": "alshrouk",
     "email": "salma.saad.2026@gmail.com",
     "password": "Salma@1234"
-  },
-  {
-    "firstName": "Menna",
-    "lastName": "Mohamed",
-    "phone": "01142522864",
-    "address": "Giza",
-    "email": "Sandy@gmail.com",
-    "password": "123456Aa@"
-  },
-  {
-    "firstName": "Menna",
-    "lastName": "Mohamed",
-    "phone": "01142522864",
-    "address": "Giza",
-    "email": "Ahmed233@gmail.com",
-    "password": "123456AAa@"
-  },
-  {
-    "firstName": "Ahmed",
-    "lastName": "Mohamed",
-    "phone": "01142522864",
-    "address": "Giza",
-    "email": "menna.reda.ext@swift-act.com",
-    "password": "123456Aa@"
-  },
-  {
-    "firstName": "Menna",
-    "lastName": "Mohamed",
-    "phone": "01142522864",
-    "address": "Giza",
-    "email": "mr8900533@gmail.com",
-    "password": "123456Aa@"
-  },
-  {
-    "firstName": "Menna",
-    "lastName": "Mohamed",
-    "phone": "01142522864",
-    "address": "Giza",
-    "email": "zoom4@stem-club.com",
-    "password": "123456Aa@"
   }
 ]
