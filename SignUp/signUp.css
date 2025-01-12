@@ -90,37 +90,38 @@ body {
 }
 #mobile nav {
   position: fixed;
-  right: -200px;
-  top: 50px;
-  width: 0px;
-  z-index: 1000;
+  right: -100%; 
+  top: 0;
+  width: 80%;
   height: 100%;
   background-color: var(--second-color);
-  transition: var(--transition);
+  z-index: 1000;
+  transition: right 0.3s ease-in-out; 
 }
 #mobile nav.open {
   right: 0;
-  width: 100%;
 }
 #mobile nav ul {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 50px 80px;
+  align-items: center;
+  padding: 50px 20px;
+  list-style: none;
 }
 #mobile nav ul li {
   margin: 15px 0;
-  padding-bottom: 20px;
-  border-bottom: 1px dotted var(--fifth-color);
+  padding-bottom: 10px;
   width: 100%;
   text-align: center;
+  border-bottom: 1px dotted var(--fifth-color);
 }
 #mobile nav ul li a {
   color: var(--main-color);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
 }
-#mobile nav ul li a.active,
 #mobile nav ul li a:hover {
   color: var(--first-color);
 }
@@ -128,10 +129,13 @@ body {
   font-size: 25px;
   color: var(--second-color);
   cursor: pointer;
-  transition: var(--transition);
+  transition: color 0.3s;
+}
+.mobile-only:hover {
+  color: var(--main-color);
 }
 .stop-scrolling {
-  overflow: hidden;
+  overflow: hidden; 
 }
 @media (max-width: 576px) {
   .logo {

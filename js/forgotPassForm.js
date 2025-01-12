@@ -9,8 +9,8 @@ export default async function renderForgotPasswordForm(loginCard, closeBtn) {
   const forgotPassFormHtml = `
       <h2 class="fh">Forgot Password</h2>
       <form class="forgot-pass-form login-form d-flex flex-column">
-          <div>
-
+        <div>
+            <div>
               <div class="mb-3">
                 <input
                   type="email"
@@ -19,7 +19,8 @@ export default async function renderForgotPasswordForm(loginCard, closeBtn) {
                   aria-describedby="emailHelp"
                   placeholder="Email"
                 />
-          </div>
+            </div>
+        </div>
           <div class="d-flex flex-column">
             <button type="submit" class="btn-reset align-self-end">Reset Password</button>
           </div>
@@ -29,7 +30,7 @@ export default async function renderForgotPasswordForm(loginCard, closeBtn) {
           </div>
     `;
 
-  loginCard.style.height = "30rem";
+  loginCard.style.height = "35rem";
   loginCard.innerHTML = forgotPassFormHtml;
   loginCard.appendChild(closeBtn);
   document.querySelector(".fh").style.font = "550 2.7rem inheret";
@@ -42,6 +43,12 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
   const forgotPassForm = document.querySelector(".forgot-pass-form");
   const resetBtn = document.querySelector(".btn-reset");
   const forgotHeader = document.querySelector(".fh");
+  const confirmPasswordField = document.createElement("input");
+  const confirmPasswordToggle = document.createElement("button");
+  const toggleB = document.createElement("button");
+  const confirmDiv = document.createElement("div");
+  toggleB.setAttribute("type","button");
+  confirmPasswordToggle.setAttribute("type","button");
 
   backToLogin.addEventListener("click", (e) => {
     e.preventDefault();
@@ -49,8 +56,35 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
   });
   // Input validation error reset
   emailField.addEventListener("input", () => {
-    if (emailField.parentElement.querySelector(".form-text")) {
-      emailField.parentElement.querySelector(".form-text").remove();
+    if (emailField.parentElement.querySelector(".form-text")|| emailField.parentElement.parentElement.querySelector(".form-text")) {
+      if(emailField.parentElement.parentElement.querySelector(".form-text"))
+      {
+        emailField.parentElement.parentElement.querySelector(".form-text").remove();
+      }else{
+        emailField.parentElement.querySelector(".form-text").remove();
+      }
+
+    }
+    // Password toggle
+    if (toggleB) {
+      toggleB.addEventListener("click", () => {
+        const isPassword = emailField.type === "password";
+        emailField.type = isPassword ? "text" : "password";
+        toggleB.innerHTML = isPassword
+          ? '<i class="fa-solid fa-eye-slash"></i>'
+          : '<i class="fa-solid fa-eye"></i>';
+      });
+    }
+
+    // confirm Password toggle
+    if (confirmPasswordToggle) {
+      confirmPasswordToggle.addEventListener("click", () => {
+        const isPassword = confirmPasswordField.type === "password";
+        confirmPasswordField.type = isPassword ? "text" : "password";
+        confirmPasswordToggle.innerHTML = isPassword
+          ? '<i class="fa-solid fa-eye-slash"></i>'
+          : '<i class="fa-solid fa-eye"></i>';
+      });
     }
   });
 
@@ -67,7 +101,7 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
         if (validUser.length > 0) {
           console.log(validUser[0].Email);
           localStorage.setItem("fgEmail", inputVal);
-          localStorage.setItem("name",validUser[0].FirstName);
+          localStorage.setItem("name", validUser[0].FirstName);
           forgotHeader.innerText = "Verification";
           emailField.type = "text";
           emailField.placeholder = "Verification code";
@@ -84,24 +118,34 @@ function attachForgotPasswordListeners(loginCard, closeBtn, users) {
       if (inputVal === localStorage.getItem("OTP")) {
         forgotHeader.innerText = "Reset Password";
         emailField.type = "password";
-        emailField.placeholder="Password code";
+        emailField.placeholder = "Password";
         emailField.value = "";
-        const confirmPasswordField = document.createElement("input");
+        emailField.className = "form-control-lg w-100 h-50 my-2";
+        toggleB.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+        toggleB.setAttribute("id", "togglePasswordl");
+        emailField.parentElement.classList.add("d-flex");
+        emailField.parentElement.appendChild(toggleB);
         confirmPasswordField.type = "password";
         confirmPasswordField.className = "form-control-lg w-100 mt-3";
         confirmPasswordField.id = "confirmPassword";
         confirmPasswordField.setAttribute("placeholder", "Confirm Password");
-        emailField.parentElement.appendChild(confirmPasswordField);
+        confirmPasswordField.className = "form-control-lg w-100 h-50 my-2";
+        confirmDiv.className = "mb-3 d-flex";
+        confirmDiv.appendChild(confirmPasswordField);
+        confirmPasswordToggle.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+        confirmPasswordToggle.setAttribute("id", "toggleConfirmPassword");
+        confirmDiv.appendChild(confirmPasswordToggle);
+        emailField.parentElement.insertAdjacentElement("afterend", confirmDiv);
         resetBtn.innerText = "Reset Password";
       } else {
         errorMsg(emailField.parentElement, "Invalid verification code.");
       }
     } else if (forgotHeader.innerText === "Reset Password") {
       const passwordRegex =
-        /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]{8,}$/;
+        /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*^?#&_-])[A-Za-z\d@#^$!%*?&_-]{8,}$/;
       if (!passwordRegex.test(inputVal))
         errorMsg(
-          emailField.parentElement,
+          emailField.parentElement.parentElement,
           "Password must be at least 8 characters, include one uppercase letter, one number, and one special character!"
         );
       else if (document.getElementById("confirmPassword") === inputVal)

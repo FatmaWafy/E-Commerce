@@ -24,6 +24,7 @@ Images.forEach((img) => {
     //create Box
     let Box = document.createElement("div");
     Box.className = "Box";
+    document.body.classList.toggle("stop-scrolling");
 
     //create ImageBox
     let ImageBox = document.createElement("div");
@@ -429,65 +430,83 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
 });
 
-document.querySelector(".checkout-button").addEventListener("click", () => {
-  if (cart.length === 0) {
-    alert("Your cart is empty! Please add items to the cart before checkout.");
-    return;
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutButton = document.querySelector(".checkout-button");
+  const closeOverlayButton = document.getElementById("close-overlay");
+  const paymentForm = document.getElementById("payment-form");
 
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const shippingCost = 80;
-  const total = subtotal + shippingCost;
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert(
+          "Your cart is empty! Please add items to the cart before checkout."
+        );
+        return;
+      }
 
-  const summary = document.getElementById("checkout-total");
-  summary.innerHTML = `
+      const subtotal = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      const shippingCost = 80;
+      const total = subtotal + shippingCost;
+
+      const summary = document.getElementById("checkout-total");
+      summary.innerHTML = `
     <li style="margin-bottom: 10px; font-weight: bold;">Total: $${total.toFixed(
       2
     )}</li>
   `;
 
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "flex";
-});
-
-document.getElementById("close-overlay").addEventListener("click", () => {
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "none";
-});
-
-document.getElementById("payment-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const phoneNumber = document.getElementById("phone-number").value;
-  const address = document.getElementById("address").value;
-  const cardNumber = document.getElementById("card-number").value;
-  const expiryDate = document.getElementById("expiry-date").value;
-
-  if (!phoneNumber || !address || !cardNumber || !expiryDate) {
-    alert("Please fill in all payment fields.");
-    return;
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "flex";
+    });
   }
+  if (closeOverlayButton) {
+    closeOverlayButton.addEventListener("click", () => {
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "none";
+    });
+  }
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  const paymentData = {
-    phoneNumber,
-    address,
-    cardNumber,
-    expiryDate,
-    cartData: cart,
-  };
+      if (!isLoggedin()) {
+        alert("You need to log in to complete the payment.");
+        userIcon.click();
+        return;
+      }
 
-  console.log("Processing payment with data:", paymentData);
+      const phoneNumber = document.getElementById("phone-number").value;
+      const address = document.getElementById("address").value;
+      const cardNumber = document.getElementById("card-number").value;
+      const expiryDate = document.getElementById("expiry-date").value;
 
-  cart = [];
-  saveCart();
-  updateCartUI();
+      if (!phoneNumber || !address || !cardNumber || !expiryDate) {
+        alert("Please fill in all payment fields.");
+        return;
+      }
 
-  alert("Payment successful!");
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "none";
+      const paymentData = {
+        phoneNumber,
+        address,
+        cardNumber,
+        expiryDate,
+        cartData: cart,
+      };
+
+      console.log("Processing payment with data:", paymentData);
+
+      cart = [];
+      saveCart();
+      updateCartUI();
+
+      alert("Payment successful!");
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "none";
+    });
+  }
 });
 
 function saveCart() {
@@ -501,5 +520,3 @@ function loadCart() {
     updateCartUI();
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {});
