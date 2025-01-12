@@ -454,6 +454,13 @@ document.getElementById("close-overlay").addEventListener("click", () => {
 document.getElementById("payment-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
+  if (!isLoggedin()) {
+    alert("You need to log in to complete the payment.");
+    userIcon.click(); 
+    return;
+  }
+
+
   const phoneNumber = document.getElementById("phone-number").value;
   const address = document.getElementById("address").value;
   const cardNumber = document.getElementById("card-number").value;
@@ -495,7 +502,3 @@ function loadCart() {
     updateCartUI();
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-
-})
