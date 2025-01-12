@@ -64,14 +64,23 @@ logoutLi.addEventListener("click", () => {
   }
 });
 
-function isLoggedin() {
+// function isLoggedin() {
+//   if (!localStorage.getItem("loggedin")) {
+//     localStorage.setItem("loggedin", "false");
+//     return false;
+//   }
+//   if (localStorage.getItem("loggedin") === "true") return true;
+//   else return false;
+// }
+
+window.isLoggedin = function() {
   if (!localStorage.getItem("loggedin")) {
     localStorage.setItem("loggedin", "false");
     return false;
   }
-  if (localStorage.getItem("loggedin") === "true") return true;
-  else return false;
-}
+  return localStorage.getItem("loggedin") === "true";
+};
+
 
 function createOverlay() {
   const overlay = document.createElement("div");
