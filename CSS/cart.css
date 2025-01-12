@@ -8,13 +8,12 @@
   font-family: "Arial", sans-serif;
 }
 
-h2 {
+#cart-items h2 {
   text-align: center;
   font-size: 30px;
   color: #41141b;
   font-weight: 700;
   margin-bottom: 25px;
-  /* text-transform: uppercase; */
 }
 
 #cart-items table {
@@ -125,7 +124,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
   padding: 10px 0;
   font-size: 18px;
   color: #333;
@@ -154,7 +152,7 @@ hr {
 
 .checkout-button {
   display: inline-block;
-  width: 50%;
+
   padding: 12px 0;
   background-color: #41141b;
   color: white;
@@ -187,9 +185,11 @@ hr {
 .overlay-content {
   background: #fff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 300px;
   max-width: 90%;
+  position: absolute;
+  left: 45px;
 }
 
 .overlay-content h2 {
@@ -244,4 +244,23 @@ hr {
 
 .search-input-cart {
   padding: 11.8px 50px 10.5px 20px;
+}
+@media (max-width: 767px) {
+  #cart-total {
+    width: 90%;
+  }
+  #cart-total h2 {
+    font-size: 20px;
+  }
+  hr {
+    margin: 10px 0;
+  }
+  .checkout-button {
+    padding: 8px 12px;
+
+    font-size: 12px;
+  }
+  #cart-items {
+    width: 90%;
+  }
 }
