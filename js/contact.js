@@ -1,4 +1,4 @@
-emailjs.init("4k7DNiTXaPW7lod8j");
+//emailjs.init("4k7DNiTXaPW7lod8j");
 
 document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -17,7 +17,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   };
 
   emailjs
-    .send("service_8jsuk64", "template_u2h4g0u", params)
+    .send("service_6yyiqxb", "template_c5wanf2", params)
     .then(() => {
       submitButton.textContent = "Sent!";
       setTimeout(() => {

@@ -17,8 +17,6 @@ const PassError = document.getElementById("error6");
 const CPassError = document.getElementById("error7");
 const messageElement = document.getElementById("message");
 
-const indicator = document.querySelector(".indicator");
-const strengthText = document.querySelector(".strength");
 
 document.getElementById("togglePassword").addEventListener("click", function() {
   const passwordField = document.getElementById("password");
@@ -102,7 +100,7 @@ registerForm.addEventListener("submit", (event) => {
             PassError.textContent = "Password must be at least 8 characters, include one uppercase letter, one number, and one special character!";
             isValid = false;
         } else {
-            PassError.textContent = ""; // Clear the error message if the password is valid
+            PassError.textContent = ""; 
         }
     }
 

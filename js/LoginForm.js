@@ -93,7 +93,6 @@ function attachLoginFormListeners(loginCard, closeBtn, users) {
 
   });
 
-
   loginForm.addEventListener("submit", (e) => {
     let errors = getLoginErrors(emailField, passwordField);
     console.log(users);

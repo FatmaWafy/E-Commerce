@@ -69,7 +69,7 @@
 .forgot-password {
   font-size: 1.2rem;
 }
-#togglePasswordl {
+#togglePasswordl,#toggleConfirmPassword {
   background-color: transparent;
   color: var(--first-color);
   border-style: none;
@@ -85,6 +85,7 @@
 }
 #exampleInputEmail1,
 #exampleInputPassword1,
+#confirmPassword,
 #resetEmail {
   border: 2px solid gray;
   width: 100%;
