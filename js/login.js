@@ -78,7 +78,8 @@ window.isLoggedin = function() {
     localStorage.setItem("loggedin", "false");
     return false;
   }
-  return localStorage.getItem("loggedin") === "true";
+  if (localStorage.getItem("loggedin") === "true") return true;
+  else return false;
 };
 
 
