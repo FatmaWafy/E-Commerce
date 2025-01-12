@@ -469,44 +469,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (paymentForm) {
-  paymentForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    paymentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    if (!isLoggedin()) {
-      alert("You need to log in to complete the payment.");
-      userIcon.click();
-      return;
-    }
+      if (!isLoggedin()) {
+        alert("You need to log in to complete the payment.");
+        userIcon.click();
+        return;
+      }
 
-    const phoneNumber = document.getElementById("phone-number").value;
-    const address = document.getElementById("address").value;
-    const cardNumber = document.getElementById("card-number").value;
-    const expiryDate = document.getElementById("expiry-date").value;
+      const phoneNumber = document.getElementById("phone-number").value;
+      const address = document.getElementById("address").value;
+      const cardNumber = document.getElementById("card-number").value;
+      const expiryDate = document.getElementById("expiry-date").value;
 
-    if (!phoneNumber || !address || !cardNumber || !expiryDate) {
-      alert("Please fill in all payment fields.");
-      return;
-    }
+      if (!phoneNumber || !address || !cardNumber || !expiryDate) {
+        alert("Please fill in all payment fields.");
+        return;
+      }
 
-    const paymentData = {
-      phoneNumber,
-      address,
-      cardNumber,
-      expiryDate,
-      cartData: cart,
-    };
+      const paymentData = {
+        phoneNumber,
+        address,
+        cardNumber,
+        expiryDate,
+        cartData: cart,
+      };
 
-    console.log("Processing payment with data:", paymentData);
+      console.log("Processing payment with data:", paymentData);
 
-    cart = [];
-    saveCart();
-    updateCartUI();
+      cart = [];
+      saveCart();
+      updateCartUI();
 
-    alert("Payment successful!");
-    const overlay = document.getElementById("checkout-overlay");
-    overlay.style.display = "none";
-  });
-}
+      alert("Payment successful!");
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "none";
+    });
+  }
 });
 
 function saveCart() {
