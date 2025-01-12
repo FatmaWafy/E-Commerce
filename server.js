@@ -8,7 +8,7 @@ const filePath = "./data.json";
 app.use(express.json());
 app.use(cors());
 app.post("/addUser", (req, res) => {
-  console.log("Request received:", req.body); // Log the incoming request
+  console.log("Request received:", req.body); 
   const newUser = req.body;
 
   fs.readFile(filePath, "utf8", (err, data) => {
@@ -28,7 +28,7 @@ app.post("/addUser", (req, res) => {
         success: false,
         message: "This email is already a user.",
       };
-      console.log("Sending response:", response); // Log the response
+      console.log("Sending response:", response); 
       return res.status(400).json(response);
     } else {
       users.push(newUser);
@@ -39,14 +39,14 @@ app.post("/addUser", (req, res) => {
             success: false,
             message: "Error saving user data",
           };
-          console.log("Sending response:", response); // Log the response
+          console.log("Sending response:", response); 
           return res.status(500).json(response);
         } else {
           const response = {
             success: true,
             message: "User added successfully!",
           };
-          console.log("Sending response:", response); // Log the response
+          console.log("Sending response:", response);
           return res.json(response);
         }
       });

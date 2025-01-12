@@ -71,16 +71,15 @@
 
       <div id="mobile">
         <div class="mobile-only"><i class="fa-solid fa-bars"></i></div>
-
         <nav>
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="./HTML/new.html">New</a></li>
-            <li><a href="./HTML/blog.html">Blog</a></li>
-            <li><a href="./HTML/about.html">About</a></li>
-            <li><a href="./HTML/contact.html">Contact</a></li>
+            <li><a href="../../index.html" class="active">Home</a></li>
+            <li><a href="../../HTML/new.html">New</a></li>
+            <li><a href="../../HTML/blog.html">Blog</a></li>
+            <li><a href="../../HTML/about.html">About</a></li>
+            <li><a href="../../HTML/contact.html">Contact</a></li>
             <li>
-              <a href="./HTML/cart.html"
+              <a href="../../HTML/cart.html"
                 ><i class="fa-solid fa-cart-shopping"></i
               ></a>
             </li>
@@ -120,7 +119,6 @@
                         <p class="errors" id="error6"></p>
                         <div class="indicator"><span class="weak"></span> <span class="medium"></span> <span
                                 class="strong"></span></div>
-                        <div class="strength"></div>
                         <div class="password-container">
                           <input type="password" id="cpassword" placeholder="Confirm Password" required/>
                           <button class="btn btn-outline-secondary" type="button" id="togglecPassword">
@@ -186,6 +184,24 @@
 <script defer src="signUp.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="module" src="../js/login.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.querySelector(".mobile-only");
+    const mobileNav = document.querySelector("#mobile nav");
+
+    menuIcon.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      document.body.classList.toggle("stop-scrolling");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menuIcon.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove("open");
+        document.body.classList.remove("stop-scrolling");
+      }
+    });
+  });
+</script>
 </body>
 </html>
 

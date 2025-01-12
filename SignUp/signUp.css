@@ -6,8 +6,8 @@
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../img/landing.jpg");
-    height: 100vh;
-    background-size: cover;
+    height: 70vh;
+    background-size: 100%;
     background-position: left;
     color: #41141b;
     overflow-x: hidden;
@@ -90,37 +90,38 @@ body {
 }
 #mobile nav {
   position: fixed;
-  right: -200px;
-  top: 50px;
-  width: 0px;
-  z-index: 1000;
+  right: -100%; 
+  top: 0;
+  width: 80%;
   height: 100%;
   background-color: var(--second-color);
-  transition: var(--transition);
+  z-index: 1000;
+  transition: right 0.3s ease-in-out; 
 }
 #mobile nav.open {
   right: 0;
-  width: 100%;
 }
 #mobile nav ul {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 50px 80px;
+  align-items: center;
+  padding: 50px 20px;
+  list-style: none;
 }
 #mobile nav ul li {
   margin: 15px 0;
-  padding-bottom: 20px;
-  border-bottom: 1px dotted var(--fifth-color);
+  padding-bottom: 10px;
   width: 100%;
   text-align: center;
+  border-bottom: 1px dotted var(--fifth-color);
 }
 #mobile nav ul li a {
   color: var(--main-color);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
 }
-#mobile nav ul li a.active,
 #mobile nav ul li a:hover {
   color: var(--first-color);
 }
@@ -128,10 +129,13 @@ body {
   font-size: 25px;
   color: var(--second-color);
   cursor: pointer;
-  transition: var(--transition);
+  transition: color 0.3s;
+}
+.mobile-only:hover {
+  color: var(--main-color);
 }
 .stop-scrolling {
-  overflow: hidden;
+  overflow: hidden; 
 }
 @media (max-width: 576px) {
   .logo {
@@ -233,7 +237,7 @@ body {
 }
 
 .password-container button {
-  background-color: #5a2e2e; /* Match your color theme */
+  background-color: #5a2e2e;
   color: white;
   border: none;
   padding: 0 15px;
@@ -287,65 +291,13 @@ body {
   text-align: left;
 }
 
-.indicator {
-  display: none;
-  background-color: #ddd;
-  padding: 3px;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
-.indicator span {
-  height: 100%;
-  width: 33%;
-  background-color: lightgrey;
-  border-radius: 5px;
-}
-
-.indicator span.active {
-  background-color: transparent;
-}
-
-.indicator span.weak {
-  background-color: red;
-}
-
-.indicator span.medium {
-  background-color: orange;
-}
-
-.indicator span.strong {
-  background-color: green;
-}
-
-.strength {
-  display: none;
-  padding: 4px;
-  font-size: 14px;
-  color: black;
-  font-weight: bold;
-}
-
-.strength.weak {
-  color: red;
-}
-
-.strength.medium {
-  color: orange;
-}
-
-.strength.strong {
-  color: green;
-}
-
-
 .footer {
     font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';
     position: fixed;
     margin-top: 100px;
     left: 0;
     bottom: 0;
-    padding: 10px;
+    padding: 25px;
     width: 100%;
     background-color: black;
     color: white;
