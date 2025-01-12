@@ -456,7 +456,7 @@ button.white {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.05);
   transition: 0.6s ease;
   position: relative;
-  height: 550px;
+  height: 400px;
 }
 
 #newProducts .pro:hover {
@@ -464,7 +464,7 @@ button.white {
 }
 #newProducts .pro img {
   width: 100%;
-  height: 80%;
+  height: 100%;
   border-radius: 10px;
 }
 
