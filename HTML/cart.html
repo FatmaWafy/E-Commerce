@@ -10,16 +10,16 @@
     ></script>
     <title>Shista</title>
     <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-  ></script>
-  <script type="text/javascript">
-    (function () {
-      emailjs.init({
-        publicKey: "toPhIjgK08z4j3BAl",
-      });
-    })();
-  </script>
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "toPhIjgK08z4j3BAl",
+        });
+      })();
+    </script>
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="../CSS/cart.css" />
     <link rel="stylesheet" href="../CSS/login.css" />
     <link rel="stylesheet" href="../main.css" />
-
   </head>
 
   <body>
@@ -38,18 +37,6 @@
         <a href="#">
           <img loading="lazy" src="../img/logo.png" class="logo" alt="" />
         </a>
-
-        <form>
-          <input
-            class="form-control search-input search-input-cart"
-            type="search"
-            placeholder="Search for products"
-            aria-label="Search"
-          />
-          <button class="search-icon" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </form>
 
         <nav>
           <ul id="navbar">
@@ -65,8 +52,15 @@
             </li>
             <li>
               <a href="#" id="userIcon">
-                <i class="fa-solid fa-user"></i>
                 <span id="userName">Login</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="normal w-25 h-25"
+                onclick="location.href='SignUp/signUp.html';"
+              >
+                Sign Up
               </a>
             </li>
           </ul>
@@ -88,8 +82,15 @@
                 ></a>
               </li>
               <li id="mobileLoginBtn">
-                <i class="fa-solid fa-user"></i>
                 <span id="userNameMob">Login</span>
+              </li>
+              <li>
+                <a
+                  class="normal w-25 h-25"
+                  onclick="location.href='SignUp/signUp.html';"
+                >
+                  Sign Up
+                </a>
               </li>
             </ul>
           </nav>
@@ -186,7 +187,10 @@
       </div>
     </section>
 
-    <section id="newsletter" class="d-flex justify-content-around align-items-center">
+    <section
+      id="newsletter"
+      class="d-flex justify-content-around align-items-center"
+    >
       <div class="newstext">
         <h4>Sign Up For Newsletter</h4>
         <p>
@@ -194,7 +198,12 @@
           <span>special offers</span>
         </p>
       </div>
-        <button class="normal w-25 h-25" onclick="location.href='../../SignUp/signUp.html';">Sign Up</button>
+      <button
+        class="normal w-25 h-25"
+        onclick="location.href='../../SignUp/signUp.html';"
+      >
+        Sign Up
+      </button>
     </section>
 
     <footer>

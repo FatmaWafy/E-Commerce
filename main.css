@@ -180,6 +180,7 @@ button.white {
   font-weight: 600;
   color: var(--second-color);
   transition: var(--transition);
+  cursor: pointer;
 }
 #navbar li a::after {
   position: absolute;
@@ -244,9 +245,7 @@ button.white {
   cursor: pointer;
   transition: var(--transition);
 }
-.stop-scrolling {
-  overflow: hidden;
-}
+
 @media (max-width: 576px) {
   .logo {
     max-width: 100px;
@@ -263,19 +262,12 @@ button.white {
     display: flex;
   }
   #navbar li {
-    padding: 0 6px;
+    padding: 0 8px;
   }
   #navbar li a {
-    font-size: 14px;
+    font-size: 16px;
   }
-  .search-input {
-    width: 300px;
-    font-size: 12px;
-  }
-  .search-icon {
-    width: 40px;
-    height: 35px;
-  }
+
   #navbar {
     margin-bottom: 0;
   }
@@ -291,44 +283,9 @@ button.white {
     font-size: 16px;
   }
   #navbar li {
-    padding: 0 10px;
+    padding: 0 12px;
   }
-  .search-input {
-    border: 2px solid #41141b;
-    border-radius: 10px;
-    padding: 8px 50px 9px 20px;
-    width: 350px;
-    font-size: 16px;
-  }
-  .search-input {
-    border: 2px solid #41141b;
-    border-radius: 10px;
-    padding: 8px 50px 9px 20px;
-    width: 350px;
-    font-size: 16px;
-  }
-  .search-input:focus {
-    outline: none;
-  }
-  .search-icon {
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--second-color);
-    border: none;
-    color: var(--first-color);
-    font-size: 20px;
-    cursor: pointer;
-    width: 50px;
-    height: 41.3px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    transition: var(--transition);
-  }
-  .search-icon:hover {
-    background-color: #b39c73;
-  }
+
   .logo {
     max-width: 150px;
   }
