@@ -247,7 +247,7 @@ function updateCartUI() {
   const subTotal = document.getElementById("sub-total");
   const shopping = document.getElementById("shopping");
   const total = document.getElementById("total");
-  
+
   if (!cartList || !total) return;
 
   cartList.innerHTML = "";
@@ -259,7 +259,7 @@ function updateCartUI() {
     const nameCell = document.createElement("td");
     nameCell.className = "product-name";
     nameCell.textContent = item.name;
-    
+
     const sizeCell = document.createElement("td");
     const sizeSelect = document.createElement("select");
     const sizes = ["Small", "Medium", "Large", "Xl", "XXl"];
@@ -340,28 +340,33 @@ function updateCartUI() {
     row.appendChild(deleteCell);
 
     cartList.appendChild(row);
-    subtotalPrice  += item.price * item.quantity;
+    subtotalPrice += item.price * item.quantity;
   });
 
   const shippingCost = cart.length > 0 ? 80 : 0;
   const totalPrice = subtotalPrice + shippingCost;
-  
+
   subtotal.textContent = subtotalPrice.toFixed(2);
 
   subTotal.textContent = `$${subtotalPrice.toFixed(2)}`;
   shopping.textContent = `$${shippingCost}`;
   total.textContent = `$${totalPrice.toFixed(2)}`;
 
-  const checkoutData = cart.map(item => ({
+  const checkoutData = cart.map((item) => ({
     name: item.name,
     size: item.size,
     quantity: item.quantity,
     price: item.price,
   }));
   const summary = document.getElementById("summary-list");
-  summary.innerHTML =checkoutData.map((item )=> `
-      <li style="margin-bottom: 10px;">${item.name} (${item.size}): ${item.quantity} x $${item.price.toFixed(2)}</li>`
-).join("");
+  summary.innerHTML = checkoutData
+    .map(
+      (item) => `
+      <li style="margin-bottom: 10px;">${item.name} (${item.size}): ${
+        item.quantity
+      } x $${item.price.toFixed(2)}</li>`
+    )
+    .join("");
 }
 
 document.addEventListener("DOMContentLoaded", updateCartUI);
@@ -425,71 +430,84 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
 });
 
-document.querySelector(".checkout-button").addEventListener("click", () => {
-  if (cart.length === 0) {
-    alert("Your cart is empty! Please add items to the cart before checkout.");
-    return;
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutButton = document.querySelector(".checkout-button");
+  const closeOverlayButton = document.getElementById("close-overlay");
+  const paymentForm = document.getElementById("payment-form");
 
-  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const shippingCost = 80; 
-  const total = subtotal + shippingCost;
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert(
+          "Your cart is empty! Please add items to the cart before checkout."
+        );
+        return;
+      }
 
+      const subtotal = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      const shippingCost = 80;
+      const total = subtotal + shippingCost;
 
-  const summary = document.getElementById("checkout-total");
-  summary.innerHTML = `
-    <li style="margin-bottom: 10px; font-weight: bold;">Total: $${total.toFixed(2)}</li>
+      const summary = document.getElementById("checkout-total");
+      summary.innerHTML = `
+    <li style="margin-bottom: 10px; font-weight: bold;">Total: $${total.toFixed(
+      2
+    )}</li>
   `;
 
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "flex";
-});
-
-document.getElementById("close-overlay").addEventListener("click", () => {
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "none";
-});
-
-
-document.getElementById("payment-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  if (!isLoggedin()) {
-    alert("You need to log in to complete the payment.");
-    userIcon.click(); 
-    return;
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "flex";
+    });
   }
-
-
-  const phoneNumber = document.getElementById("phone-number").value;
-  const address = document.getElementById("address").value;
-  const cardNumber = document.getElementById("card-number").value;
-  const expiryDate = document.getElementById("expiry-date").value;
-
-  if (!phoneNumber || !address ||!cardNumber || !expiryDate) {
-    alert("Please fill in all payment fields.");
-    return;
+  if (closeOverlayButton) {
+    closeOverlayButton.addEventListener("click", () => {
+      const overlay = document.getElementById("checkout-overlay");
+      overlay.style.display = "none";
+    });
   }
+  if (paymentForm) {
+  paymentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const paymentData = {
-    phoneNumber,
-    address,
-    cardNumber,
-    expiryDate,
-    cartData: cart,
-  };
+    if (!isLoggedin()) {
+      alert("You need to log in to complete the payment.");
+      userIcon.click();
+      return;
+    }
 
-  console.log("Processing payment with data:", paymentData);
+    const phoneNumber = document.getElementById("phone-number").value;
+    const address = document.getElementById("address").value;
+    const cardNumber = document.getElementById("card-number").value;
+    const expiryDate = document.getElementById("expiry-date").value;
 
-  cart = [];
-  saveCart();
-  updateCartUI();
+    if (!phoneNumber || !address || !cardNumber || !expiryDate) {
+      alert("Please fill in all payment fields.");
+      return;
+    }
 
-  alert("Payment successful!");
-  const overlay = document.getElementById("checkout-overlay");
-  overlay.style.display = "none";
+    const paymentData = {
+      phoneNumber,
+      address,
+      cardNumber,
+      expiryDate,
+      cartData: cart,
+    };
+
+    console.log("Processing payment with data:", paymentData);
+
+    cart = [];
+    saveCart();
+    updateCartUI();
+
+    alert("Payment successful!");
+    const overlay = document.getElementById("checkout-overlay");
+    overlay.style.display = "none";
+  });
+}
 });
-
 
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
