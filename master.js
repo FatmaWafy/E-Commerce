@@ -24,7 +24,6 @@ Images.forEach((img) => {
     //create Box
     let Box = document.createElement("div");
     Box.className = "Box";
-    document.body.classList.toggle("stop-scrolling");
 
     //create ImageBox
     let ImageBox = document.createElement("div");

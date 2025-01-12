@@ -38,17 +38,7 @@
           <img src="../img/logo.png" class="logo" alt="" />
         </a>
 
-        <form>
-          <input
-            class="form-control search-input"
-            type="search"
-            placeholder="Search for products"
-            aria-label="Search"
-          />
-          <button class="search-icon" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </form>
+        
 
         <nav>
           <ul id="navbar">
@@ -62,8 +52,16 @@
             </li>
             <li>
               <a href="#" id="userIcon">
-                <i class="fa-solid fa-user"></i>
+                
                 <span id="userName">Login</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="normal w-25 h-25"
+                onclick="location.href='SignUp/signUp.html';"
+              >
+                Sign Up
               </a>
             </li>
           </ul>
@@ -85,8 +83,16 @@
                 ></a>
               </li>
               <li id="mobileLoginBtn">
-                <i class="fa-solid fa-user"></i>
+                
                 <span id="userNameMob">Login</span>
+              </li>
+              <li>
+                <a
+                  class="normal w-25 h-25"
+                  onclick="location.href='SignUp/signUp.html';"
+                >
+                  Sign Up
+                </a>
               </li>
             </ul>
           </nav>
@@ -94,9 +100,10 @@
       </div>
     </header>
     <!-- ################## Start About ################# -->
-     <div id="banner">
+    <div id="banner">
       <h1>About Us</h1>
-     </div>
+    </div>
+
     <section class="about-section-container my-5">
       <div class="container-fluid h-50 my-5 py-5 d-flex flex-column align-items-center">
         <div class="row justify-content-around align-items-center mx-5 px-5 my-5">
@@ -122,8 +129,6 @@
           </div>
         </div>
     </section>
-
-
 
     <section id="features">
        <h2 class="heading my-5 text-center">What we offer:</h2>
@@ -154,6 +159,7 @@
         </div>
       </div>
     </section>
+
     <section id="newsletter" class="d-flex justify-content-around align-items-center">
       <div class="newstext">
         <h4>Sign Up For Newsletter</h4>
