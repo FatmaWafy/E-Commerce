@@ -152,7 +152,7 @@ hr {
 
 .checkout-button {
   display: inline-block;
-
+  width: 120px;
   padding: 12px 0;
   background-color: #41141b;
   color: white;

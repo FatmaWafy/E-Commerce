@@ -67,6 +67,7 @@ button.normal {
   outline: none;
   transition: var(--transition);
 }
+
 button.white {
   font-size: 13px;
   font-weight: 600;

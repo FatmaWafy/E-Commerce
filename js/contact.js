@@ -6,7 +6,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
-  const submitButton = document.querySelector(".normal");
+  const submitButton = document.querySelector(".normal2");
 
   submitButton.textContent = "Sending...";
 

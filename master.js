@@ -139,7 +139,6 @@ document.addEventListener("click", function (e) {
 
 ///////////////////////////////////////
 // Slider
-
 const slider = function () {
   const slides = document.querySelectorAll(".slide");
   const btnLeft = document.querySelector(".slider__btn--left");
@@ -154,7 +153,6 @@ const slider = function () {
   let curSlide = 0;
   const maxSlide = slides.length;
 
-  // Functions
   const createDots = function () {
     slides.forEach(function (_, i) {
       dotContainer.insertAdjacentHTML(
@@ -182,7 +180,6 @@ const slider = function () {
     );
   };
 
-  // Next slide
   const nextSlide = function () {
     if (curSlide === maxSlide - 1) {
       curSlide = 0;
@@ -211,7 +208,6 @@ const slider = function () {
   };
   init();
 
-  // Event handlers
   btnRight.addEventListener("click", nextSlide);
   btnLeft.addEventListener("click", prevSlide);
 
@@ -228,13 +224,13 @@ const slider = function () {
     }
   });
 };
+
 document.addEventListener("DOMContentLoaded", () => {
   const sliderElement = document.querySelector(".slider");
   if (sliderElement) {
     slider();
   }
 });
-
 ///////////////////////////////////////
 // Cart
 
