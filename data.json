@@ -4,7 +4,7 @@
     "LastName": "Reda",
     "Email": "menna.r712@gmail.com",
     "Phone": "",
-    "Password": "menna123#M"
+    "Password": "eng__Mina12"
   },
   {
     "FirstName": "Ahmed",
@@ -41,6 +41,14 @@
     "phone": "011",
     "address": "alshrouk",
     "email": "salma.saad.2026@gmail.com",
+    "password": "Salma@1234"
+  },
+  {
+    "firstName": "salma",
+    "lastName": "saad",
+    "phone": "011",
+    "address": "cairo",
+    "email": "salma2@gmail.com",
     "password": "Salma@1234"
   }
 ]

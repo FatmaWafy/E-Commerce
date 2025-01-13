@@ -147,6 +147,18 @@
   font-weight: 600;
   color: black;
 }
+button.normal2 {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 30px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition);
+}
 @media (max-width: 767px) {
   #form form span {
     font-size: 12px;
